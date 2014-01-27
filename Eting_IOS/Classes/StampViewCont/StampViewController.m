@@ -45,6 +45,7 @@
         _contentTextView.frame = CGRectMake(_contentTextView.frame.origin.x, _contentTextView.frame.origin.y, _contentTextView.frame.size.width, _contentTextView.frame.size.height-10);
         _contentTextView.contentSize = CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-10);
     }
+    _contentTextView.font = [UIFont systemFontOfSize:15];
 }
 
 - (IBAction)backClick:(id)sender{
@@ -152,11 +153,11 @@
                      animations: ^{
                          _writeView.center = CGPointMake(_writeView.center.x, _writeView.center.y-height);
                          if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                             [_contentTextView setFrame:CGRectMake(25, 131, 267, 251-100)];
+                             [_contentTextView setFrame:CGRectMake(_contentTextView.frame.origin.x, 131, 267, 251-100)];
                              [_contentTextView setContentSize:CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-100)];
                              [_bgImgView1 setFrame:CGRectMake(_bgImgView1.frame.origin.x, _bgImgView1.frame.origin.y, _bgImgView1.frame.size.width, _bgImgView1.frame.size.height-height)];
                          }else{
-                             [_contentTextView setFrame:CGRectMake(25, 131, 267, 251-100-88)];
+                             [_contentTextView setFrame:CGRectMake(_contentTextView.frame.origin.x, 131, 267, 251-100-88)];
                              [_contentTextView setContentSize:CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-100-88)];
                              [_bgImgView1 setFrame:CGRectMake(_bgImgView1.frame.origin.x, _bgImgView1.frame.origin.y, _bgImgView1.frame.size.width, _bgImgView1.frame.size.height-height)];
                          }

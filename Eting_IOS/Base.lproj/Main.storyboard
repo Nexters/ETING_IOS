@@ -142,19 +142,19 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg01.png" id="X7x-iZ-H8d">
-                                <rect key="frame" x="11" y="65" width="300" height="40"/>
+                                <rect key="frame" x="10" y="65" width="300" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send_bg02.png" id="jFN-JC-SHE">
-                                <rect key="frame" x="11" y="105" width="299" height="375"/>
+                                <rect key="frame" x="10" y="105" width="300" height="375"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="5BC-zK-ahu">
-                                <rect key="frame" x="25" y="131" width="267" height="259"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="131" width="267" height="259"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2013.05.06      01:23" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KH6-yQ-zy4">
@@ -236,7 +236,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg03.png" id="WJ9-0W-Pt4">
-                                        <rect key="frame" x="11" y="0.0" width="300" height="77"/>
+                                        <rect key="frame" x="10" y="0.0" width="300" height="77"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="H0Q-PB-rXw">
@@ -821,14 +821,14 @@
         <!--Content View Controller-->
         <scene sceneID="wks-r6-i3F">
             <objects>
-                <viewController storyboardIdentifier="ContentViewController" id="PB9-Lc-gjp" customClass="ContentViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="44p-cQ-CoZ">
+                <viewController storyboardIdentifier="ContentViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="PB9-Lc-gjp" customClass="ContentViewController" sceneMemberID="viewController">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="44p-cQ-CoZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="SOo-sX-LaO">
+                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="SOo-sX-LaO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg01.jpg" id="NLm-pS-otE">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -864,14 +864,14 @@
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="puh-FN-fOP">
                                         <rect key="frame" x="14" y="75" width="292" height="330"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cX1-Z4-Zkg">
                                         <rect key="frame" x="14" y="416" width="292" height="144"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="hM4-0I-ZtI">
-                                        <rect key="frame" x="25" y="126" width="270" height="257"/>
+                                    <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="hM4-0I-ZtI">
+                                        <rect key="frame" x="20" y="126" width="270" height="257"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -890,7 +890,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_btn01.png" id="dEh-Cl-PO4">
-                                        <rect key="frame" x="209" y="427" width="87" height="31"/>
+                                        <rect key="frame" x="208" y="427" width="87" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </imageView>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_btn01.png" id="6u1-To-pT1">
@@ -898,11 +898,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="rct-Op-umd">
-                                        <rect key="frame" x="33" y="482" width="255" height="67"/>
+                                        <rect key="frame" x="25" y="482" width="255" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
@@ -911,6 +911,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="bgAllImgView" destination="NLm-pS-otE" id="bZk-Uz-xSn"/>
                         <outlet property="bgImgView" destination="puh-FN-fOP" id="w3e-yo-wh0"/>
@@ -927,11 +929,71 @@
             </objects>
             <point key="canvasLocation" x="390" y="784"/>
         </scene>
+        <!--Agree View Controller-->
+        <scene sceneID="CRt-oD-PPm">
+            <objects>
+                <viewController storyboardIdentifier="AgreeViewController" id="jaG-cj-ete" customClass="AgreeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E6l-lK-e7x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg01.jpg" id="BRx-sb-ZxD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg02.png" id="g9a-IE-84Q">
+                                <rect key="frame" x="10" y="24" width="300" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="DPe-aa-cfH">
+                                <rect key="frame" x="26" y="38" width="268" height="429"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">&lt;개인정보 수집 및 이용안내&gt;수집하는 개인정보의 항목 및 수집방법가. 수집하는 개인정보의 항목첫째, 회사는 회원가입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 실행 당시 아래와 같은 개인정보를 자동으로 수집하고 있습니다.- Encriped Device ID둘째, 서비스 이용과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다.- 방문 일시, 서비스 이용 기록, 불량 이용 기록나. 개인정보 수집방법회사는 다음과 같은 방법으로 개인정보를 수집합니다.- 이팅 서비스를 사용함으로써 자동으로 수집- 서비스 가입이나 사용 중 이용자의 자발적 제공을 통한 수집개인정보의 수집 및 이용목적가. 서비스 제공에 관한 계약 이행컨텐츠 제공, 특정 맞춤 서비스 제공, 본인인증 등나. 회원관리제한적 본인 확인제에 따른 본인확인, 개인식별, 불량회원(이팅 이용약관 제11조 제1항 제1호 내지 제12호 위반 등으로 인하여 제19조 제1항에 따른 영구이용정지 회원 및 동조 제2항에 따라 계약 해지된 영구이용정지 회원)의 부정 이용방지와 비인가 사용방지, 가입의사 확인, 가입 및 가입횟수 제한, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달다. 신규 서비스 개발 및 마케팅·광고에의 활용신규 서비스 개발 및 맞춤 서비스 제공, 통계학적 특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성 정보 제공 및 참여기회 제공, 접속빈도 파악, 회원의 서비스이용에 대한 통계개인정보의 공유 및 제공회사는 이용자들의 개인정보를 '개인정보의 수집목적 및 이용목적'에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 공개하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.- 이용자들이 사전에 공개에 동의한 경우- 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우개인정보의 보유 및 이용기간이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용목적이 달성되면 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.가. 회사 내부 방침에 의한 정보보유 사유- 부정이용기록보존 이유 : 부정 이용 방지보존 기간 : 1년나. 관련법령에 의한 정보보유 사유상법, 전자상거래 등에서의 소비자보호에 관한 법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.- 계약 또는 청약철회 등에 관한 기록보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률보존 기간 : 5년- 대금결제 및 재화 등의 공급에 관한 기록보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률보존 기간 : 5년- 소비자의 불만 또는 분쟁처리에 관한 기록보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률보존 기간 : 3년- 본인확인에 관한 기록보존 이유 : 정보통신망 이용촉진 및 정보보호 등에 관한 법률보존 기간 : 6개월- 방문에 관한 기록보존 이유 : 통신비밀보호법보존 기간 : 3개월</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ius-GZ-x8A">
+                                <rect key="frame" x="25" y="495" width="130" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="disagree_btn01.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="disagree_btn01_press.png"/>
+                                <state key="highlighted" image="disagree_btn01_press.png"/>
+                                <connections>
+                                    <action selector="disAgreeClick:" destination="jaG-cj-ete" eventType="touchUpInside" id="EeV-xp-3dB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rxi-VF-VBo">
+                                <rect key="frame" x="165" y="495" width="130" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" image="agree_btn01.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="agree_btn01_press.png"/>
+                                <state key="highlighted" image="agree_btn01_press.png"/>
+                                <connections>
+                                    <action selector="agreeClick:" destination="jaG-cj-ete" eventType="touchUpInside" id="DL4-6l-ej3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="de6-ea-jjM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="1476"/>
+        </scene>
     </scenes>
     <resources>
         <image name="about_bg.png" width="640" height="960"/>
+        <image name="agree_btn01.png" width="130" height="45"/>
+        <image name="agree_btn01_press.png" width="130" height="45"/>
         <image name="alarm_back_icon.png" width="40" height="40"/>
         <image name="alarm_bg01.png" width="300" height="40"/>
+        <image name="alarm_bg02.png" width="600" height="580"/>
         <image name="alarm_bg03.png" width="300" height="77"/>
         <image name="alarm_report_icon.png" width="40" height="40"/>
         <image name="alarm_send_btn.png" width="64" height="55"/>
@@ -940,6 +1002,8 @@
         <image name="cloud02.png" width="200" height="70"/>
         <image name="cloud03.png" width="110" height="35"/>
         <image name="cloud04.png" width="255" height="80"/>
+        <image name="disagree_btn01.png" width="130" height="45"/>
+        <image name="disagree_btn01_press.png" width="130" height="45"/>
         <image name="feed_btn01.png" width="87" height="31"/>
         <image name="feed_btn01_press.png" width="87" height="31"/>
         <image name="feed_btn02.png" width="87" height="31"/>

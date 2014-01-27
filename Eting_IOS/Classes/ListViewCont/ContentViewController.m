@@ -40,7 +40,9 @@
     _bgImgView2.image = [backImage2 stretchableImageWithLeftCapWidth:3 topCapHeight:0];
     //NSMutableArray* storyArr = [[StoryManager sharedSingleton] getStorys];
     //_storyDic = [storyArr objectAtIndex:_idx];
+    
     _textView.text = [_storyDic objectForKey:@"content"];
+    _textView.font = [UIFont systemFontOfSize:15];
     _dateLabel.text = [_storyDic objectForKey:@"story_date"];
     
     if ([_storyDic objectForKey:@"reply"] == NULL) {
@@ -48,6 +50,7 @@
         [_bgImgView2 setHidden:TRUE];
     }else{
         _replyTextView.text = [[_storyDic objectForKey:@"reply"] objectForKey:@"comment"];
+        _replyTextView.font = [UIFont systemFontOfSize:15];
         NSString* stampStr = [[_storyDic objectForKey:@"reply"] objectForKey:@"stamps"];
         NSArray* stampArr = [stampStr componentsSeparatedByString:@","];
         NSArray* stampImgArr = [NSArray arrayWithObjects:_stampImgView1,_stampImgView2,_stampImgView3, nil];

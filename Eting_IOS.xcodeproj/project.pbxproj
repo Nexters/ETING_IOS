@@ -20,6 +20,12 @@
 		CD10CC3B1872FB3800EF30F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10CC1D1872FB3800EF30F4 /* UIKit.framework */; };
 		CD10CC431872FB3800EF30F4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD10CC411872FB3800EF30F4 /* InfoPlist.strings */; };
 		CD10CC451872FB3800EF30F4 /* Eting_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10CC441872FB3800EF30F4 /* Eting_IOSTests.m */; };
+		CD1435051896A8FE0078B1A9 /* AgreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1435041896A8FE0078B1A9 /* AgreeViewController.m */; };
+		CD14350B1896AA120078B1A9 /* agree_btn01_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1435061896AA120078B1A9 /* agree_btn01_press@2x.png */; };
+		CD14350C1896AA120078B1A9 /* agree_btn01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1435071896AA120078B1A9 /* agree_btn01@2x.png */; };
+		CD14350D1896AA120078B1A9 /* agreement_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1435081896AA120078B1A9 /* agreement_bg@2x.png */; };
+		CD14350E1896AA120078B1A9 /* disagree_btn01_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1435091896AA120078B1A9 /* disagree_btn01_press@2x.png */; };
+		CD14350F1896AA120078B1A9 /* disagree_btn01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD14350A1896AA120078B1A9 /* disagree_btn01@2x.png */; };
 		CD2CAF44187EDF080026171A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2CAF43187EDF080026171A /* MessageUI.framework */; };
 		CD2CAF47187EE16E0026171A /* PasswordSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2CAF46187EE16E0026171A /* PasswordSettingViewController.m */; };
 		CD6EB0F51872FBFD00B7813A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6EB0F01872FBFD00B7813A /* AppDelegate.m */; };
@@ -200,6 +206,13 @@
 		CD10CC401872FB3800EF30F4 /* Eting_IOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Eting_IOSTests-Info.plist"; sourceTree = "<group>"; };
 		CD10CC421872FB3800EF30F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD10CC441872FB3800EF30F4 /* Eting_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Eting_IOSTests.m; sourceTree = "<group>"; };
+		CD1435031896A8FE0078B1A9 /* AgreeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreeViewController.h; sourceTree = "<group>"; };
+		CD1435041896A8FE0078B1A9 /* AgreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreeViewController.m; sourceTree = "<group>"; };
+		CD1435061896AA120078B1A9 /* agree_btn01_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agree_btn01_press@2x.png"; sourceTree = "<group>"; };
+		CD1435071896AA120078B1A9 /* agree_btn01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agree_btn01@2x.png"; sourceTree = "<group>"; };
+		CD1435081896AA120078B1A9 /* agreement_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agreement_bg@2x.png"; sourceTree = "<group>"; };
+		CD1435091896AA120078B1A9 /* disagree_btn01_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disagree_btn01_press@2x.png"; sourceTree = "<group>"; };
+		CD14350A1896AA120078B1A9 /* disagree_btn01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disagree_btn01@2x.png"; sourceTree = "<group>"; };
 		CD2CAF43187EDF080026171A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CD2CAF45187EE16E0026171A /* PasswordSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordSettingViewController.h; sourceTree = "<group>"; };
 		CD2CAF46187EE16E0026171A /* PasswordSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordSettingViewController.m; sourceTree = "<group>"; };
@@ -524,6 +537,8 @@
 				CD7C4CCB18740850002115DF /* MainView.h */,
 				CD7C4CCC18740850002115DF /* MainView.m */,
 				CD7C4CCE1874085D002115DF /* MainView.xib */,
+				CD1435031896A8FE0078B1A9 /* AgreeViewController.h */,
+				CD1435041896A8FE0078B1A9 /* AgreeViewController.m */,
 			);
 			path = MainViewCont;
 			sourceTree = "<group>";
@@ -551,6 +566,11 @@
 		CD7C4CEA18743937002115DF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD1435061896AA120078B1A9 /* agree_btn01_press@2x.png */,
+				CD1435071896AA120078B1A9 /* agree_btn01@2x.png */,
+				CD1435081896AA120078B1A9 /* agreement_bg@2x.png */,
+				CD1435091896AA120078B1A9 /* disagree_btn01_press@2x.png */,
+				CD14350A1896AA120078B1A9 /* disagree_btn01@2x.png */,
 				CD793A58188ECB0D003A0084 /* about_bg@1x.png */,
 				CD793A59188ECB0D003A0084 /* about_bg@2x.png */,
 				CD793B1A188ECED7003A0084 /* feed_btn01_press@2x.png */,
@@ -849,6 +869,7 @@
 			files = (
 				CD793B2D188ECED7003A0084 /* feed_btn02@2x.png in Resources */,
 				CD793B2A188ECED7003A0084 /* feed_btn01_press@2x.png in Resources */,
+				CD14350F1896AA120078B1A9 /* disagree_btn01@2x.png in Resources */,
 				CD793AD0188ECB0D003A0084 /* emotion_icon01_press@2x.png in Resources */,
 				CD7C4CE018741E89002115DF /* ListView.xib in Resources */,
 				CD793AE4188ECB0D003A0084 /* list_bg07@2x.png in Resources */,
@@ -866,6 +887,7 @@
 				CD793AD8188ECB0D003A0084 /* emotion_icon05_press@2x.png in Resources */,
 				CD793ADA188ECB0D003A0084 /* emotion_icon06_press@2x.png in Resources */,
 				CD793ADE188ECB0D003A0084 /* list_bg01@2x.png in Resources */,
+				CD14350C1896AA120078B1A9 /* agree_btn01@2x.png in Resources */,
 				CDD668A918731C8B000A527B /* ListCell.xib in Resources */,
 				CD793B32188ECED7003A0084 /* feed_btn05_press@2x.png in Resources */,
 				CD793AD3188ECB0D003A0084 /* emotion_icon02@2x.png in Resources */,
@@ -916,18 +938,21 @@
 				CD7C4CCF1874085D002115DF /* MainView.xib in Resources */,
 				CD793AF7188ECB0D003A0084 /* password_btn01@2x.png in Resources */,
 				CD793AC6188ECB0D003A0084 /* bg01@2x.jpg in Resources */,
+				CD14350E1896AA120078B1A9 /* disagree_btn01_press@2x.png in Resources */,
 				CD793B03188ECB0D003A0084 /* setting_btn_password01_press@2x.png in Resources */,
 				CD793B15188ECB0D003A0084 /* toggle_on@2x.png in Resources */,
 				CD793B2E188ECED7003A0084 /* feed_btn03_press@2x.png in Resources */,
 				CD793B07188ECB0D003A0084 /* setting_btn_submit@2x.png in Resources */,
 				CD793ACC188ECB0D003A0084 /* cloud02@2x.png in Resources */,
 				CD793AC0188ECB0D003A0084 /* alarm_bg03@2x.png in Resources */,
+				CD14350D1896AA120078B1A9 /* agreement_bg@2x.png in Resources */,
 				CD793B02188ECB0D003A0084 /* setting_btn_blank@2x.png in Resources */,
 				CD793ABA188ECB0D003A0084 /* about_bg@2x.png in Resources */,
 				CD793AF4188ECB0D003A0084 /* main_star01@2x.png in Resources */,
 				CDBAA21B187DA558006CF90C /* appicon_58x58.png in Resources */,
 				CD793AE8188ECB0D003A0084 /* list_icon__off@2x.png in Resources */,
 				CD793ACB188ECB0D003A0084 /* cloud01@2x.png in Resources */,
+				CD14350B1896AA120078B1A9 /* agree_btn01_press@2x.png in Resources */,
 				CD793ABB188ECB0D003A0084 /* alarm_back_icon_press@2x.png in Resources */,
 				CD793AC7188ECB0D003A0084 /* bg02@1x.jpg in Resources */,
 				CD793AC4188ECB0D003A0084 /* bg_snow@2x.png in Resources */,
@@ -1040,6 +1065,7 @@
 				CDBAA20A187DA334006CF90C /* AboutViewController.m in Sources */,
 				CD7C4CDE18741E77002115DF /* ListView.m in Sources */,
 				CDBAA201187DA2F5006CF90C /* SettingViewController.m in Sources */,
+				CD1435051896A8FE0078B1A9 /* AgreeViewController.m in Sources */,
 				CD10CC261872FB3800EF30F4 /* main.m in Sources */,
 				CD7C4CCD18740850002115DF /* MainView.m in Sources */,
 				CD6EB13F187302AB00B7813A /* MainViewController.m in Sources */,

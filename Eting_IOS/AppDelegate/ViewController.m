@@ -118,9 +118,22 @@ reply =     {
         viewCont.type = PASSWORD_VIEWCONT_INIT;
         [self presentViewController:viewCont animated:TRUE completion:nil];
     }else{
+        
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"Agree"]) {
+            //[[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"Registration"];
+            UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"AgreeViewController"];
+            AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+            [delegate transitionToViewController:viewCont withTransition:UIViewAnimationOptionTransitionCrossDissolve];
+        }else{
+            UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+            [delegate transitionToViewController:viewCont withTransition:UIViewAnimationOptionTransitionCrossDissolve];
+        }
+        /*
         UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
         AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
         [delegate transitionToViewController:viewCont withTransition:UIViewAnimationOptionTransitionCrossDissolve];
+         */
     }
 }
 - (void)didReceiveMemoryWarning

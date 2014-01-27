@@ -28,6 +28,7 @@
 - (void)initVariable{
     etingBtnPoint = _etingBtn.center;
     bgImg2Point = _bgImgView2.center;
+    _textView.font = [UIFont systemFontOfSize:15];
 }
 - (IBAction)backClick:(id)sender
 {
@@ -98,7 +99,6 @@
             }
             
             [saveMyStroyDic setObject:[[NSNumber alloc] initWithInt:backGroundIdx] forKey:@"ColorIdx"];
-            
             [[StoryManager sharedSingleton] saveStory:saveMyStroyDic date:[[StoryManager sharedSingleton] todayKey]];
      
         }
