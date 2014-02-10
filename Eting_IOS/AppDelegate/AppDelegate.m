@@ -67,18 +67,19 @@
                 [self.window.rootViewController presentViewController:viewCont animated:YES completion:nil];
             }
         }
-        
-        
-        MainViewController* mainViewCont = (MainViewController*)self.window.rootViewController;
-        if (mainViewCont && [mainViewCont respondsToSelector:@selector(applicationWillEnterForeground:)] && [mainViewCont isKindOfClass:[MainViewController class]]) {
-            [mainViewCont applicationWillEnterForeground:application];
-        }
+    }
+    MainViewController* mainViewCont = (MainViewController*)self.window.rootViewController;
+    if (mainViewCont && [mainViewCont respondsToSelector:@selector(applicationWillEnterForeground:)] && [mainViewCont isKindOfClass:[MainViewController class]]) {
+        [mainViewCont applicationWillEnterForeground:application];
     }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    MainViewController* mainViewCont = (MainViewController*)self.window.rootViewController;
+    if (mainViewCont && [mainViewCont respondsToSelector:@selector(applicationDidBecomeActive:)] && [mainViewCont isKindOfClass:[MainViewController class]]) {
+        [mainViewCont applicationDidBecomeActive:application];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -106,6 +107,10 @@
     if (viewCont) {
         [viewCont viewDidLoad];
     }
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error NS_AVAILABLE_IOS(3_0){
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError %@",[error debugDescription]);
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {

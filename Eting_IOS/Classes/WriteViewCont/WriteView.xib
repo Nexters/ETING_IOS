@@ -43,7 +43,7 @@
                     </connections>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EsR-i8-HbK">
-                    <rect key="frame" x="25" y="452" width="270" height="55"/>
+                    <rect key="frame" x="25" y="447" width="270" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -83,9 +83,9 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="bg01.jpg" width="640" height="960"/>
-        <image name="send_bg01.png" width="300" height="40"/>
-        <image name="send_btn01.png" width="270" height="57"/>
+        <image name="bg01.jpg" width="320" height="568"/>
+        <image name="send_bg01.png" width="494" height="70"/>
+        <image name="send_btn01.png" width="440" height="80"/>
         <image name="splash_spaceship.png" width="70" height="70"/>
     </resources>
 </document>

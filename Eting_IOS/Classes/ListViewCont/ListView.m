@@ -80,6 +80,7 @@
 #pragma mark BaseViewDelegate
 - (void)viewDidSlide{
     [self refreshView];
+    [self.parentViewCont.writeView.textView resignFirstResponder];
 }
 
 - (void)viewUnSilde{
@@ -190,6 +191,7 @@
         if (backNum) {
              backGroundIdx = [backNum integerValue];
         }
+        NSLog(@"backGroundIdx : %ld",backGroundIdx);
         UIImage *backImage = [UIImage imageNamed:[NSString stringWithFormat:@"list_bg%02ld.png",(long)backGroundIdx]];
         cell.bgImgView.image = [backImage stretchableImageWithLeftCapWidth:3 topCapHeight:0];
         cell.btn.tag = indexPath.row;

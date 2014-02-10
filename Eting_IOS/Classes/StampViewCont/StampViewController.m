@@ -93,7 +93,7 @@
     NSMutableString* stampIdSuffix = [[NSMutableString alloc] init];
     for (UIButton* btn in [NSArray arrayWithObjects:_stampBtn1,_stampBtn2,_stampBtn3,_stampBtn4,_stampBtn5,_stampBtn6, nil]) {
         if (btn.selected) {
-            [stampIdSuffix appendString:[NSString stringWithFormat:@"%ld,",(long)btn.tag]];
+            [stampIdSuffix appendString:[NSString stringWithFormat:@"%ld,",(long)btn.tag+1]];
         }
     }
     if ([stampIdSuffix isEqualToString:@""]) {

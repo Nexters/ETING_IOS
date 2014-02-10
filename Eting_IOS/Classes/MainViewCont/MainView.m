@@ -41,7 +41,7 @@
     NSInteger day = [dateComponents day];
     _dateLabel.text = [NSString stringWithFormat:@"%li. %02li. %02li",(long)year,(long)month, (long)day];
     NSMutableArray* storyArr = [[StoryManager sharedSingleton] getStorys];
-    _etingCountLabel.text = [NSString stringWithFormat:@"%lu Eting",(unsigned long)[storyArr count]];
+    _etingCountLabel.text = [NSString stringWithFormat:@"%lu eting",(unsigned long)[storyArr count]];
     NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
     _stampCountLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[stampArr count]];
     [UIView animateWithDuration:0.5 animations:^{
@@ -92,11 +92,14 @@
         [_spaceShipView setHidden:FALSE];
     }else{
         [_spaceShipView setHidden:TRUE];
+        [self earthquake:_spaceShipView];
     }
+    [self.parentViewCont.writeView.textView resignFirstResponder];
     [self refreshView];
 }
 
 - (void)viewUnSilde{
+    
 }
 
 

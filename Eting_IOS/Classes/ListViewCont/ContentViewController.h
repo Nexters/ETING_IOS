@@ -11,6 +11,7 @@
 @interface ContentViewController : UIViewController
 {
 }
+@property (weak, nonatomic) IBOutlet UIScrollView* scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView* bgAllImgView;
 @property (weak, nonatomic) IBOutlet UIImageView* bgImgView;
 @property (weak, nonatomic) IBOutlet UIImageView* bgImgView2;

@@ -44,9 +44,15 @@
         // 스크롤 완료
         if (_type == TUTORIAL_INIT) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-            AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
-            [delegate transitionToViewController:viewCont withTransition:UIViewAnimationOptionTransitionCrossDissolve];
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:@"Agree"]) {
+                UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"AgreeViewController"];
+                AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+                [delegate transitionToViewController:viewCont withTransition:UIViewAnimationOptionTransitionCrossDissolve];
+            }else{
+                UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+                AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+                [delegate transitionToViewController:viewCont withTransition:UIViewAnimationOptionTransitionCrossDissolve];
+            }
         }else if (_type == TUTORIAL_SETTING){
             [self dismissViewControllerAnimated:TRUE completion:nil];
         }
