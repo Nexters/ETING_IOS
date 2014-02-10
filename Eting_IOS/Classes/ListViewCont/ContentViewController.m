@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     NSInteger backIdx = _idx;
     if (backIdx <= 0 || backIdx > 4) {
         backIdx = 1;
@@ -61,6 +62,10 @@
                 [imgView setHidden:FALSE];
                 imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"feed_btn%02d",stampIdxStr.intValue]];
             }
+        }
+        if ([[UIScreen mainScreen] bounds].size.height == 480) {
+            [_scrollView setFrame:CGRectMake(0, 0, 320, 480)];
+            [_scrollView setContentSize:CGSizeMake(320, 568)];
         }
     }
 	// Do any additional setup after loading the view.

@@ -71,11 +71,6 @@
                                 <rect key="frame" x="-18" y="263" width="168" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="IZ0-N5-imu" customClass="SnowEmitterView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="Wds-ll-fEg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="588"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -99,7 +94,6 @@
                         <outlet property="cloudImgView5" destination="Cud-KG-Cmd" id="Pu8-gM-0JU"/>
                         <outlet property="cloudImgView6" destination="1Dy-ex-ZCC" id="RrT-SI-ceT"/>
                         <outlet property="scrollView" destination="Wds-ll-fEg" id="jEI-jL-NaE"/>
-                        <outlet property="snowView" destination="IZ0-N5-imu" id="eMJ-XE-HjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hwx-jc-KvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,7 +139,7 @@
                                 <rect key="frame" x="10" y="65" width="300" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="send_bg02.png" id="jFN-JC-SHE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg02.png" id="jFN-JC-SHE">
                                 <rect key="frame" x="10" y="105" width="300" height="375"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -237,7 +231,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg03.png" id="WJ9-0W-Pt4">
                                         <rect key="frame" x="10" y="0.0" width="300" height="77"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="H0Q-PB-rXw">
                                         <rect key="frame" x="25" y="8" width="200" height="55"/>
@@ -315,7 +309,7 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Q14-CP-LUJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="F2p-rP-ZH4" id="PSb-mJ-6ry"/>
                                 </connections>
@@ -826,9 +820,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" id="SOo-sX-LaO">
+                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" id="SOo-sX-LaO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg01.jpg" id="NLm-pS-otE">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -919,6 +913,7 @@
                         <outlet property="bgImgView2" destination="cX1-Z4-Zkg" id="WY0-JF-RGz"/>
                         <outlet property="dateLabel" destination="lxW-ys-Fx5" id="Iw9-dM-IFR"/>
                         <outlet property="replyTextView" destination="rct-Op-umd" id="Py1-QL-JRT"/>
+                        <outlet property="scrollView" destination="SOo-sX-LaO" id="e4S-h1-be0"/>
                         <outlet property="stampImgView1" destination="6hV-8x-Hdw" id="kTS-0n-sbP"/>
                         <outlet property="stampImgView2" destination="6u1-To-pT1" id="5AX-F3-wmX"/>
                         <outlet property="stampImgView3" destination="dEh-Cl-PO4" id="eV6-UM-aP4"/>
@@ -946,10 +941,109 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="DPe-aa-cfH">
-                                <rect key="frame" x="26" y="38" width="268" height="429"/>
+                                <rect key="frame" x="20" y="38" width="280" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">&lt;개인정보 수집 및 이용안내&gt;수집하는 개인정보의 항목 및 수집방법가. 수집하는 개인정보의 항목첫째, 회사는 회원가입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 실행 당시 아래와 같은 개인정보를 자동으로 수집하고 있습니다.- Encriped Device ID둘째, 서비스 이용과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다.- 방문 일시, 서비스 이용 기록, 불량 이용 기록나. 개인정보 수집방법회사는 다음과 같은 방법으로 개인정보를 수집합니다.- 이팅 서비스를 사용함으로써 자동으로 수집- 서비스 가입이나 사용 중 이용자의 자발적 제공을 통한 수집개인정보의 수집 및 이용목적가. 서비스 제공에 관한 계약 이행컨텐츠 제공, 특정 맞춤 서비스 제공, 본인인증 등나. 회원관리제한적 본인 확인제에 따른 본인확인, 개인식별, 불량회원(이팅 이용약관 제11조 제1항 제1호 내지 제12호 위반 등으로 인하여 제19조 제1항에 따른 영구이용정지 회원 및 동조 제2항에 따라 계약 해지된 영구이용정지 회원)의 부정 이용방지와 비인가 사용방지, 가입의사 확인, 가입 및 가입횟수 제한, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달다. 신규 서비스 개발 및 마케팅·광고에의 활용신규 서비스 개발 및 맞춤 서비스 제공, 통계학적 특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성 정보 제공 및 참여기회 제공, 접속빈도 파악, 회원의 서비스이용에 대한 통계개인정보의 공유 및 제공회사는 이용자들의 개인정보를 '개인정보의 수집목적 및 이용목적'에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 공개하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.- 이용자들이 사전에 공개에 동의한 경우- 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우개인정보의 보유 및 이용기간이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용목적이 달성되면 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.가. 회사 내부 방침에 의한 정보보유 사유- 부정이용기록보존 이유 : 부정 이용 방지보존 기간 : 1년나. 관련법령에 의한 정보보유 사유상법, 전자상거래 등에서의 소비자보호에 관한 법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.- 계약 또는 청약철회 등에 관한 기록보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률보존 기간 : 5년- 대금결제 및 재화 등의 공급에 관한 기록보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률보존 기간 : 5년- 소비자의 불만 또는 분쟁처리에 관한 기록보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률보존 기간 : 3년- 본인확인에 관한 기록보존 이유 : 정보통신망 이용촉진 및 정보보호 등에 관한 법률보존 기간 : 6개월- 방문에 관한 기록보존 이유 : 통신비밀보호법보존 기간 : 3개월</mutableString>
+                                <string key="text">&lt;이팅 이용 약관&gt;
+
+제 1 조 (목적)
+
+이 약관은 넥스터즈(이하 '회사')이 제공하는 이팅 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다. 
+
+
+제 2 조 (정의)
+
+이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
+
+①'서비스'라 함은 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와 상관없이 '회원'이 이용할 수 있는 이팅 서비스를 의미합니다. 
+
+②'회원'이라 함은 회사의 '서비스'에 접속하여 이 약관에 따라 '회사'와 이용계약을 체결하고 '회사'가 제공하는 '서비스'를 이용하는 고객을 말합니다. 
+
+③'게시물'이라 함은 '회원'이 '서비스'를 이용함에 있어 '서비스상'에 게시한 부호ㆍ문자ㆍ음성ㆍ음향ㆍ화상ㆍ동영상 등의 정보 형태의 글, 사진, 동영상 및 각종 파일과 링크 등을 의미합니다.
+
+
+제 3 조 ('회원'의 의무)
+
+①'회원'은 다음 행위를 하여서는 안 됩니다. 
+
+ 1. 신청 또는 변경 시 허위내용의 등록 
+
+ 2. 타인의 정보도용 
+
+ 3. '회사'가 게시한 정보의 변경 
+
+ 4. 다른 회원의 개인정보 및 계정정보를 수집하는 행위
+
+ 5. '회사'의 사전 동의 없이 영리 목적의 광고성 정보를 전송하기 위하여 이용하는 행위
+
+ 6. 리버스엔지니어링, 디컴파일, 디스어셈블 및 기타 일체의 가공행위를 통하여 서비스를 복제, 분해 또는 모방 기타 변형하는 행위
+
+ 7. 자동 접속 프로그램 등을 사용하는 비정상적인 용법과 다른 방법으로 서비스를 이용하여 '회사'의 서버에 부하를 일으켜 회사의 정상적인 서비스를 방해하는 행위
+
+ 8. 본인 아닌 제3자에게 접속권한을 부여하는 행위
+
+ 9. '회사'와 기타 제3자의 저작권 등 지적재산권에 대한 침해 
+
+ 10. '회사' 및 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위 
+
+ 11. 외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 '서비스'에 공개 또는 게시하는 행위 
+
+ 12. '회사'의 동의없이 영리를 목적으로 '서비스'를 사용하는 행위
+
+ 13. 기타 불법적이거나 부당한 행위 
+
+②'회원'은 관계법, 이 약관의 규정, 이용안내 및 '서비스'와 관련하여 공지한 주의사항, '회사'가 통지하는 사항 등을 준수하여야 하며, 기타 '회사'의 업무에 방해되는 행위를 하여서는 안 됩니다.
+
+
+&lt;개인정보 수집 및 이용안내&gt;
+
+수집하는 개인정보의 항목 및 수집방법
+가. 수집하는 개인정보의 항목
+첫째, 회사는 회원가입, 원활한 고객상담, 각종 서비스의 제공을 위해 최초 실행 당시 아래와 같은 개인정보를 자동으로 수집하고 있습니다.
+- Encriped Device ID
+둘째, 서비스 이용과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다.
+- 방문 일시, 서비스 이용 기록, 불량 이용 기록
+나. 개인정보 수집방법
+회사는 다음과 같은 방법으로 개인정보를 수집합니다.
+- 이팅 서비스를 사용함으로써 자동으로 수집
+- 서비스 가입이나 사용 중 이용자의 자발적 제공을 통한 수집
+
+개인정보의 수집 및 이용목적
+가. 서비스 제공에 관한 계약 이행
+컨텐츠 제공, 특정 맞춤 서비스 제공, 본인인증 등
+나. 회원관리
+제한적 본인 확인제에 따른 본인확인, 개인식별, 불량회원(이팅 이용약관 제11조 제1항 제1호 내지 제12호 위반 등으로 인하여 제19조 제1항에 따른 영구이용정지 회원 및 동조 제2항에 따라 계약 해지된 영구이용정지 회원)의 부정 이용방지와 비인가 사용방지, 가입의사 확인, 가입 및 가입횟수 제한, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달
+다. 신규 서비스 개발 및 마케팅·광고에의 활용
+신규 서비스 개발 및 맞춤 서비스 제공, 통계학적 특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성 정보 제공 및 참여기회 제공, 접속빈도 파악, 회원의 서비스이용에 대한 통계
+
+개인정보의 공유 및 제공
+회사는 이용자들의 개인정보를 '개인정보의 수집목적 및 이용목적'에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 공개하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.
+- 이용자들이 사전에 공개에 동의한 경우
+- 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우
+
+개인정보의 보유 및 이용기간
+이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용목적이 달성되면 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
+가. 회사 내부 방침에 의한 정보보유 사유
+- 부정이용기록
+보존 이유 : 부정 이용 방지
+보존 기간 : 1년
+나. 관련법령에 의한 정보보유 사유
+상법, 전자상거래 등에서의 소비자보호에 관한 법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.
+- 계약 또는 청약철회 등에 관한 기록
+보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률
+보존 기간 : 5년
+- 대금결제 및 재화 등의 공급에 관한 기록
+보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률
+보존 기간 : 5년
+- 소비자의 불만 또는 분쟁처리에 관한 기록
+보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률
+보존 기간 : 3년
+- 본인확인에 관한 기록
+보존 이유 : 정보통신망 이용촉진 및 정보보호 등에 관한 법률
+보존 기간 : 6개월
+- 방문에 관한 기록
+보존 이유 : 통신비밀보호법
+보존 기간 : 3개월</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -988,16 +1082,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="about_bg.png" width="640" height="960"/>
+        <image name="about_bg.png" width="320" height="568"/>
         <image name="agree_btn01.png" width="130" height="45"/>
         <image name="agree_btn01_press.png" width="130" height="45"/>
         <image name="alarm_back_icon.png" width="40" height="40"/>
         <image name="alarm_bg01.png" width="300" height="40"/>
-        <image name="alarm_bg02.png" width="600" height="580"/>
+        <image name="alarm_bg02.png" width="300" height="378"/>
         <image name="alarm_bg03.png" width="300" height="77"/>
         <image name="alarm_report_icon.png" width="40" height="40"/>
-        <image name="alarm_send_btn.png" width="64" height="55"/>
-        <image name="bg01.jpg" width="640" height="960"/>
+        <image name="alarm_send_btn.png" width="145" height="121"/>
+        <image name="bg01.jpg" width="320" height="568"/>
         <image name="cloud01.png" width="255" height="80"/>
         <image name="cloud02.png" width="200" height="70"/>
         <image name="cloud03.png" width="110" height="35"/>
@@ -1022,13 +1116,12 @@
         <image name="list_del_icon_press.png" width="40" height="40"/>
         <image name="password_blank.png" width="240" height="50"/>
         <image name="password_btn01.png" width="250" height="60"/>
-        <image name="send_bg02.png" width="600" height="604"/>
         <image name="setting_btn_aboutus.png" width="300" height="60"/>
         <image name="setting_btn_aboutus_press.png" width="300" height="60"/>
         <image name="setting_btn_alarm.png" width="300" height="60"/>
         <image name="setting_btn_backup.png" width="300" height="60"/>
         <image name="setting_btn_backup_press.png" width="300" height="60"/>
-        <image name="setting_btn_blank.png" width="300" height="60"/>
+        <image name="setting_btn_blank.png" width="490" height="85"/>
         <image name="setting_btn_password01.png" width="300" height="60"/>
         <image name="setting_btn_password01_press.png" width="300" height="60"/>
         <image name="setting_btn_password02.png" width="300" height="60"/>
