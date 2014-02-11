@@ -159,65 +159,69 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="sb4-gE-qWp">
-                                <rect key="frame" x="10" y="380" width="300" height="100"/>
+                                <rect key="frame" x="10" y="429" width="300" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg03.png" id="WwL-4s-2KB">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oza-lg-Z09">
-                                        <rect key="frame" x="17" y="20" width="87" height="31"/>
+                                        <rect key="frame" x="12" y="6" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="feed_btn01.png"/>
-                                        <state key="selected" image="feed_btn01_press.png"/>
-                                        <state key="highlighted" image="feed_btn01_press.png"/>
+                                        <state key="normal" image="emotion_icon01.png"/>
+                                        <state key="selected" image="emotion_icon01_press.png"/>
+                                        <state key="highlighted" image="emotion_icon01_press.png"/>
                                         <connections>
                                             <action selector="stampClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="WL4-5d-8ec"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xdm-oS-q77">
-                                        <rect key="frame" x="107" y="20" width="87" height="31"/>
+                                        <rect key="frame" x="59" y="6" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="feed_btn02.png"/>
-                                        <state key="selected" image="feed_btn02_press.png"/>
-                                        <state key="highlighted" image="feed_btn02_press.png"/>
+                                        <state key="normal" image="emotion_icon02.png"/>
+                                        <state key="selected" image="emotion_icon02_press.png"/>
+                                        <state key="highlighted" image="emotion_icon02_press.png"/>
                                         <connections>
                                             <action selector="stampClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="Cp4-hC-Qpa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ib2-dv-u3Y">
-                                        <rect key="frame" x="197" y="20" width="87" height="31"/>
+                                        <rect key="frame" x="106" y="6" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="feed_btn03.png"/>
-                                        <state key="selected" image="feed_btn03_press.png"/>
-                                        <state key="highlighted" image="feed_btn03_press.png"/>
+                                        <state key="normal" image="emotion_icon03.png"/>
+                                        <state key="selected" image="emotion_icon03_press.png"/>
+                                        <state key="highlighted" image="emotion_icon03_press.png"/>
                                         <connections>
                                             <action selector="stampClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="ZXv-5Q-hTI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7S9-Io-aEj">
-                                        <rect key="frame" x="17" y="57" width="87" height="31"/>
+                                        <rect key="frame" x="153" y="6" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="feed_btn04.png"/>
-                                        <state key="selected" image="feed_btn04_press.png"/>
-                                        <state key="highlighted" image="feed_btn04_press.png"/>
+                                        <state key="normal" image="emotion_icon04.png"/>
+                                        <state key="selected" image="emotion_icon04_press.png"/>
+                                        <state key="highlighted" image="emotion_icon04_press.png"/>
                                         <connections>
                                             <action selector="stampClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="gcW-iq-vYr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U3T-jf-i4z">
-                                        <rect key="frame" x="107" y="57" width="87" height="31"/>
+                                        <rect key="frame" x="200" y="6" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="feed_btn05.png"/>
-                                        <state key="selected" image="feed_btn05_press.png"/>
-                                        <state key="highlighted" image="feed_btn05_press.png"/>
+                                        <state key="normal" image="emotion_icon05.png"/>
+                                        <state key="selected" image="emotion_icon05_press.png"/>
+                                        <state key="highlighted" image="emotion_icon05_press.png"/>
                                         <connections>
                                             <action selector="stampClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="Dhg-o6-Fc6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ow5-bG-5Fn">
-                                        <rect key="frame" x="197" y="57" width="87" height="31"/>
+                                        <rect key="frame" x="247" y="6" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" image="feed_btn06.png"/>
-                                        <state key="selected" image="feed_btn06_press.png"/>
-                                        <state key="highlighted" image="feed_btn06_press.png"/>
+                                        <state key="normal" image="emotion_icon06.png"/>
+                                        <state key="selected" image="emotion_icon06_press.png"/>
+                                        <state key="highlighted" image="emotion_icon06_press.png"/>
                                         <connections>
                                             <action selector="stampClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="gtP-k3-fyQ"/>
                                         </connections>
@@ -226,11 +230,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="q74-JN-hUL">
-                                <rect key="frame" x="0.0" y="480" width="320" height="71"/>
+                                <rect key="frame" x="0.0" y="481" width="320" height="79"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg03.png" id="WJ9-0W-Pt4">
-                                        <rect key="frame" x="10" y="0.0" width="300" height="77"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarm_bg04.png" id="WJ9-0W-Pt4">
+                                        <rect key="frame" x="10" y="0.0" width="300" height="79"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="H0Q-PB-rXw">
@@ -265,6 +269,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rWn-pk-0Th">
+                                <rect key="frame" x="241" y="392" width="80" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="pass_btn01.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="pass_btn01_press.png"/>
+                                <state key="highlighted" image="pass_btn01_press.png"/>
+                                <connections>
+                                    <action selector="passCick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="XpN-Wv-UWo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -279,6 +296,7 @@
                         <outlet property="contentTextView" destination="5BC-zK-ahu" id="ar3-5K-vSn"/>
                         <outlet property="dateLabel" destination="KH6-yQ-zy4" id="6sy-b6-C5n"/>
                         <outlet property="emptyWriteLabel" destination="nhu-mH-dyf" id="NVl-tm-Q1V"/>
+                        <outlet property="imoticonView" destination="sb4-gE-qWp" id="z8q-0C-ATI"/>
                         <outlet property="reportBtn" destination="bQX-jU-tHL" id="eR3-DS-ljk"/>
                         <outlet property="stampBtn1" destination="oza-lg-Z09" id="4kn-FG-Mb6"/>
                         <outlet property="stampBtn2" destination="Xdm-oS-q77" id="z64-Pz-yX4"/>
@@ -515,6 +533,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="nVl-8i-h3q">
                                 <rect key="frame" x="246" y="89" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchChange:" destination="7LP-Cm-yLU" eventType="valueChanged" id="l7e-wF-df1"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1yd-kM-Pj4">
                                 <rect key="frame" x="248" y="31" width="42" height="21"/>
@@ -820,14 +841,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg01.jpg" id="NLm-pS-otE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" id="SOo-sX-LaO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg01.jpg" id="NLm-pS-otE">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xzl-vi-cY5">
                                         <rect key="frame" x="271" y="25" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -856,22 +877,38 @@
                                             <action selector="backClick:" destination="PoB-7b-AkP" eventType="touchUpInside" id="gR7-Ou-bSt"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="puh-FN-fOP">
-                                        <rect key="frame" x="14" y="75" width="292" height="330"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_top_bg01.png" id="qFj-qP-KQp">
+                                        <rect key="frame" x="14" y="70" width="292" height="8"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cX1-Z4-Zkg">
-                                        <rect key="frame" x="14" y="416" width="292" height="144"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="puh-FN-fOP">
+                                        <rect key="frame" x="14" y="78" width="292" height="323"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_bottom_bg01.png" id="DiF-HI-z44">
+                                        <rect key="frame" x="14" y="400" width="292" height="8"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" id="hM4-0I-ZtI">
-                                        <rect key="frame" x="20" y="126" width="270" height="257"/>
+                                        <rect key="frame" x="25" y="128" width="270" height="257"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_feed_top_bg01.png" id="Ov5-6e-Ye0">
+                                        <rect key="frame" x="14" y="416" width="292" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cX1-Z4-Zkg">
+                                        <rect key="frame" x="14" y="467" width="292" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_bottom_bg01.png" id="MUe-Os-xqz">
+                                        <rect key="frame" x="14" y="546" width="292" height="8"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.04.01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lxW-ys-Fx5">
                                         <rect key="frame" x="25" y="99" width="233" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -879,26 +916,62 @@
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_btn01.png" id="6hV-8x-Hdw">
-                                        <rect key="frame" x="25" y="427" width="87" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_btn01.png" id="dEh-Cl-PO4">
-                                        <rect key="frame" x="208" y="427" width="87" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </imageView>
-                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_btn01.png" id="6u1-To-pT1">
-                                        <rect key="frame" x="117" y="427" width="87" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" id="rct-Op-umd">
-                                        <rect key="frame" x="25" y="482" width="255" height="67"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <rect key="frame" x="25" y="443" width="255" height="83"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="toV-PB-dmt">
+                                        <rect key="frame" x="22" y="423" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="s1c-WN-fKx">
+                                        <rect key="frame" x="69" y="423" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="w3U-8y-mu1">
+                                        <rect key="frame" x="117" y="423" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HVj-jB-HRJ">
+                                        <rect key="frame" x="163" y="423" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lLc-KA-pxa">
+                                        <rect key="frame" x="210" y="423" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LHj-bD-s7M">
+                                        <rect key="frame" x="257" y="423" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TZ7-4g-qDY">
+                                        <rect key="frame" x="185" y="528" width="65" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="report_btn01.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="report_btn01_press.png"/>
+                                        <state key="highlighted" image="report_btn01_press.png"/>
+                                        <connections>
+                                            <action selector="reportClick:" destination="PB9-Lc-gjp" eventType="touchUpInside" id="Rdo-vU-puH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6fJ-4Q-GDl">
+                                        <rect key="frame" x="250" y="528" width="50" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="del_btn01.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="del_btn01_press.png"/>
+                                        <state key="highlighted" image="del_btn01_press.png"/>
+                                        <connections>
+                                            <action selector="delCommentClick:" destination="PB9-Lc-gjp" eventType="touchUpInside" id="Scl-mu-2Jv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -909,14 +982,23 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="bgAllImgView" destination="NLm-pS-otE" id="bZk-Uz-xSn"/>
-                        <outlet property="bgImgView" destination="puh-FN-fOP" id="w3e-yo-wh0"/>
-                        <outlet property="bgImgView2" destination="cX1-Z4-Zkg" id="WY0-JF-RGz"/>
                         <outlet property="dateLabel" destination="lxW-ys-Fx5" id="Iw9-dM-IFR"/>
+                        <outlet property="delBtn" destination="6fJ-4Q-GDl" id="UVy-kK-EK5"/>
+                        <outlet property="feedbackBottomBgImgView" destination="MUe-Os-xqz" id="2eL-6e-WVA"/>
+                        <outlet property="feedbackMiddleBgImgView" destination="cX1-Z4-Zkg" id="eJd-Fx-zl1"/>
+                        <outlet property="feedbackTopBgImgView" destination="Ov5-6e-Ye0" id="kKj-ze-DjB"/>
+                        <outlet property="listBottomBgImgView" destination="DiF-HI-z44" id="oO7-ft-ULC"/>
+                        <outlet property="listMiddleBgImgView" destination="puh-FN-fOP" id="4Yd-2P-SMD"/>
+                        <outlet property="listTopBgImgView" destination="qFj-qP-KQp" id="abu-pK-hel"/>
                         <outlet property="replyTextView" destination="rct-Op-umd" id="Py1-QL-JRT"/>
+                        <outlet property="reportBtn" destination="TZ7-4g-qDY" id="FfL-5A-6xN"/>
                         <outlet property="scrollView" destination="SOo-sX-LaO" id="e4S-h1-be0"/>
-                        <outlet property="stampImgView1" destination="6hV-8x-Hdw" id="kTS-0n-sbP"/>
-                        <outlet property="stampImgView2" destination="6u1-To-pT1" id="5AX-F3-wmX"/>
-                        <outlet property="stampImgView3" destination="dEh-Cl-PO4" id="eV6-UM-aP4"/>
+                        <outlet property="stampImgView1" destination="toV-PB-dmt" id="o3I-aA-67m"/>
+                        <outlet property="stampImgView2" destination="s1c-WN-fKx" id="dTO-I2-Oix"/>
+                        <outlet property="stampImgView3" destination="w3U-8y-mu1" id="djt-IL-JOS"/>
+                        <outlet property="stampImgView4" destination="HVj-jB-HRJ" id="TaK-qk-35L"/>
+                        <outlet property="stampImgView5" destination="lLc-KA-pxa" id="lTp-dF-RuH"/>
+                        <outlet property="stampImgView6" destination="LHj-bD-s7M" id="DOT-Sr-MWX"/>
                         <outlet property="textView" destination="hM4-0I-ZtI" id="bsb-VJ-mil"/>
                     </connections>
                 </viewController>
@@ -1087,35 +1169,45 @@
         <image name="agree_btn01_press.png" width="130" height="45"/>
         <image name="alarm_back_icon.png" width="40" height="40"/>
         <image name="alarm_bg01.png" width="300" height="40"/>
-        <image name="alarm_bg02.png" width="300" height="378"/>
-        <image name="alarm_bg03.png" width="300" height="77"/>
+        <image name="alarm_bg02.png" width="300" height="297"/>
+        <image name="alarm_bg03.png" width="300" height="81"/>
+        <image name="alarm_bg04.png" width="300" height="77"/>
         <image name="alarm_report_icon.png" width="40" height="40"/>
-        <image name="alarm_send_btn.png" width="145" height="121"/>
+        <image name="alarm_send_btn.png" width="64" height="55"/>
         <image name="bg01.jpg" width="320" height="568"/>
         <image name="cloud01.png" width="255" height="80"/>
         <image name="cloud02.png" width="200" height="70"/>
         <image name="cloud03.png" width="110" height="35"/>
         <image name="cloud04.png" width="255" height="80"/>
+        <image name="del_btn01.png" width="50" height="20"/>
+        <image name="del_btn01_press.png" width="79" height="27"/>
         <image name="disagree_btn01.png" width="130" height="45"/>
         <image name="disagree_btn01_press.png" width="130" height="45"/>
-        <image name="feed_btn01.png" width="87" height="31"/>
-        <image name="feed_btn01_press.png" width="87" height="31"/>
-        <image name="feed_btn02.png" width="87" height="31"/>
-        <image name="feed_btn02_press.png" width="87" height="31"/>
-        <image name="feed_btn03.png" width="87" height="31"/>
-        <image name="feed_btn03_press.png" width="87" height="31"/>
-        <image name="feed_btn04.png" width="87" height="31"/>
-        <image name="feed_btn04_press.png" width="87" height="31"/>
-        <image name="feed_btn05.png" width="87" height="31"/>
-        <image name="feed_btn05_press.png" width="87" height="31"/>
-        <image name="feed_btn06.png" width="87" height="31"/>
-        <image name="feed_btn06_press.png" width="87" height="31"/>
+        <image name="emotion_icon01.png" width="40" height="40"/>
+        <image name="emotion_icon01_press.png" width="40" height="40"/>
+        <image name="emotion_icon02.png" width="40" height="40"/>
+        <image name="emotion_icon02_press.png" width="40" height="40"/>
+        <image name="emotion_icon03.png" width="40" height="40"/>
+        <image name="emotion_icon03_press.png" width="40" height="40"/>
+        <image name="emotion_icon04.png" width="40" height="40"/>
+        <image name="emotion_icon04_press.png" width="40" height="40"/>
+        <image name="emotion_icon05.png" width="40" height="40"/>
+        <image name="emotion_icon05_press.png" width="40" height="40"/>
+        <image name="emotion_icon06.png" width="40" height="40"/>
+        <image name="emotion_icon06_press.png" width="40" height="40"/>
         <image name="list_back_icon.png" width="40" height="40"/>
         <image name="list_back_icon_press.png" width="40" height="40"/>
+        <image name="list_bottom_bg01.png" width="292" height="6"/>
         <image name="list_del_icon.png" width="40" height="40"/>
         <image name="list_del_icon_press.png" width="40" height="40"/>
+        <image name="list_feed_top_bg01.png" width="292" height="52"/>
+        <image name="list_top_bg01.png" width="292" height="8"/>
+        <image name="pass_btn01.png" width="50" height="30"/>
+        <image name="pass_btn01_press.png" width="80" height="40"/>
         <image name="password_blank.png" width="240" height="50"/>
         <image name="password_btn01.png" width="250" height="60"/>
+        <image name="report_btn01.png" width="65" height="20"/>
+        <image name="report_btn01_press.png" width="141" height="27"/>
         <image name="setting_btn_aboutus.png" width="300" height="60"/>
         <image name="setting_btn_aboutus_press.png" width="300" height="60"/>
         <image name="setting_btn_alarm.png" width="300" height="60"/>
@@ -1125,7 +1217,7 @@
         <image name="setting_btn_password01.png" width="300" height="60"/>
         <image name="setting_btn_password01_press.png" width="300" height="60"/>
         <image name="setting_btn_password02.png" width="300" height="60"/>
-        <image name="setting_btn_submit.png" width="300" height="60"/>
+        <image name="setting_btn_submit.png" width="490" height="85"/>
         <image name="setting_btn_tutorial.png" width="300" height="60"/>
         <image name="setting_btn_tutorial_press.png" width="300" height="60"/>
         <image name="setting_icon01.png" width="20" height="20"/>

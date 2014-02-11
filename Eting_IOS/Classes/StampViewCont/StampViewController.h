@@ -27,4 +27,5 @@
 @property (weak, nonatomic) IBOutlet UITextView* writeTextView;
 @property (weak, nonatomic) IBOutlet UIImageView* bgImgView1;
 @property (weak, nonatomic) IBOutlet UIView* writeView;
+@property (weak, nonatomic) IBOutlet UIView* imoticonView;
 @end

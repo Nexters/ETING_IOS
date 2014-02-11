@@ -97,7 +97,23 @@
     }
     for (NSMutableDictionary* dic in storyArr) {
         if ([[dic objectForKey:@"story_id"] isEqualToString:[replyDic objectForKey:@"story_id"]]) {
-            [dic setObject:replyDic forKey:@"reply"];
+            if ([dic objectForKey:@"reply"] == NULL) {
+                [dic setObject:replyDic forKey:@"reply"];
+            }
+        }
+    }
+    storyArray = storyArr;
+    [self changeStoryArrayToDictionary];
+    [storyArr writeToFile:storyPath atomically:YES];
+}
+- (void)removeStoryReply:(NSDictionary*)replyDic{
+    NSMutableArray *storyArr = [NSMutableArray arrayWithContentsOfFile:storyPath];
+    if (storyArr == NULL) {
+        storyArr = [[NSMutableArray alloc] init];
+    }
+    for (NSMutableDictionary* dic in storyArr) {
+        if ([[dic objectForKey:@"story_id"] isEqualToString:[replyDic objectForKey:@"story_id"]]) {
+            [dic removeObjectForKey:@"reply"];
         }
     }
     storyArray = storyArr;

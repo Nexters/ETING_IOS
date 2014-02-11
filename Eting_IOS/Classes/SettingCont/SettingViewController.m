@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "TutorialViewController.h"
 #import "PasswordSettingViewController.h"
+#import <FSExtendedAlertKit.h>
 @interface SettingViewController ()
 
 @end
@@ -36,6 +37,9 @@
 - (IBAction)btnClick:(id)sender
 {
     NSInteger tag = ((UIButton *)sender).tag;
+    if (tag == 0) {
+        
+    }
     if (tag == 1) {
         if ([[NSUserDefaults standardUserDefaults] stringForKey:@"Password"]) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -81,7 +85,11 @@
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 - (IBAction)switchChange:(id)sender{
-    
+    FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"아이폰 설정에서 푸시를 꺼주세요." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+        UISwitch* sw = (UISwitch*)sender;
+        [sw setOn:TRUE];
+    }] otherButtons:nil];
+    [alert show];
 }
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result

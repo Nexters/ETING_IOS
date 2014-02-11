@@ -39,43 +39,16 @@
     NSMutableDictionary* newStoryDic = [[StoryManager sharedSingleton] getStoryDictionary];
     _storyDic = newStoryDic;
     _storyArr = [[StoryManager sharedSingleton] getStorys];
-    NSLog(@"STORY ARR : %@",[_storyArr debugDescription]);
+    NSLog(@"_storyArr : %@",[_storyArr debugDescription]);
     [_tableView reloadData];
-    /*
-    if ([newStoryDic count] != [_storyDic count]) {
-        // 날짜가 추가됬다면
-        _storyDic = newStoryDic;
-        [_tableView reloadData];
-    }else{
-        NSMutableArray* arr=[_storyDic objectForKey:[[StoryManager sharedSingleton] todayKey]];
-        NSMutableArray* arr2=[newStoryDic objectForKey:[[StoryManager sharedSingleton] todayKey]];
-        if ([arr count] != [arr2 count]) {
-            _storyDic = newStoryDic;
-            NSMutableArray* indexPathArr = [[NSMutableArray alloc] init];
-            int addCnt = (int)([arr2 count] - [arr count]);
-            for (int i = 0; i < addCnt ; i++) {
-                [indexPathArr addObject:[NSIndexPath indexPathForRow:i+1 inSection:0]];
-            }
-            NSMutableArray* indexPathArr2 = [[NSMutableArray alloc] init];
-            for (int i = addCnt; i < [arr2 count] ; i++) {
-                [indexPathArr2 addObject:[NSIndexPath indexPathForRow:i+1 inSection:0]];
-            }
-            _addCellCnt += (int)([arr2 count]-[arr count]);
-            [_tableView beginUpdates];
-            [_tableView insertRowsAtIndexPaths:indexPathArr withRowAnimation:UITableViewRowAnimationLeft];
-            [_tableView endUpdates];
-        }
-    }
-     */
+    
     if ([_storyDic count] != 0) {
         _emptyLabel.hidden = TRUE;
         _emptyStarImgView.hidden = TRUE;
     }else{
         _emptyLabel.hidden = FALSE;
         _emptyStarImgView.hidden = FALSE;
-    }
-    
-    //[_tableView reloadData];
+    }    
 }
 #pragma mark BaseViewDelegate
 - (void)viewDidSlide{
@@ -187,11 +160,10 @@
        
         cell.parentView = self;
         NSNumber* backNum = [dic objectForKey:@"ColorIdx"];
-        NSInteger backGroundIdx = 1;
+        NSInteger backGroundIdx = 3;
         if (backNum) {
              backGroundIdx = [backNum integerValue];
         }
-        NSLog(@"backGroundIdx : %ld",backGroundIdx);
         UIImage *backImage = [UIImage imageNamed:[NSString stringWithFormat:@"list_bg%02ld.png",(long)backGroundIdx]];
         cell.bgImgView.image = [backImage stretchableImageWithLeftCapWidth:3 topCapHeight:0];
         cell.btn.tag = indexPath.row;
@@ -241,7 +213,7 @@
             //viewCont.modalTransitionStyle = UIModalTransitionStylePartialCurl;
             //UIViewController* viewCont = [[UIViewController alloc] init];
             viewCont.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            viewCont.storyDic = dic;
+            viewCont.storyDic = [dic mutableCopy];
             viewCont.parent = self;
             NSNumber* num = [dic objectForKey:@"ColorIdx"];
             NSInteger idx = 1;

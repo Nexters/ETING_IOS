@@ -33,6 +33,7 @@
     
     NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
     stampDic = [stampArr objectAtIndex:0];
+    NSLog(@"stampDic : %@",[stampDic debugDescription]);
     _dateLabel.text = [NSString stringWithFormat:@"%@    %@",[stampDic objectForKey:@"story_date"],[stampDic objectForKey:@"story_time"]];
     _contentTextView.text = [NSString stringWithFormat:@"%@",[stampDic objectForKey:@"content"]];
     /*
@@ -138,6 +139,30 @@
         [btn setSelected:FALSE];
     }
 }
+- (IBAction)passCick:(id)sender{
+    [[StoryManager sharedSingleton] removeStamp:[stampDic objectForKey:@"story_id"]];
+    NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
+    if ([stampArr count] == 0) {
+        [self dismissViewControllerAnimated:TRUE completion:nil];
+        return  ;
+    }
+    [UIView transitionWithView:self.view duration:1.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void){
+    
+        stampDic = [stampArr objectAtIndex:0];
+        _dateLabel.text = [NSString stringWithFormat:@"%@    %@",[stampDic objectForKey:@"story_date"],[stampDic objectForKey:@"story_time"]];
+        _contentTextView.text = [NSString stringWithFormat:@"%@",[stampDic objectForKey:@"content"]];
+        originalRect = _contentTextView.frame;
+        originalSize = _contentTextView.contentSize;
+        if ([[UIScreen mainScreen] bounds].size.height == 480) {
+            _contentTextView.frame = CGRectMake(_contentTextView.frame.origin.x, _contentTextView.frame.origin.y, _contentTextView.frame.size.width, _contentTextView.frame.size.height-10);
+            _contentTextView.contentSize = CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-10);
+        }
+        _contentTextView.font = [UIFont systemFontOfSize:15];
+    }completion:^(BOOL finished){
+        
+    }];
+}
+
 #pragma mark UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
     
@@ -146,12 +171,13 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView{
 //    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture:)];
 //    [_contentTextView addGestureRecognizer:tap];
-    int height = 198;
+    int height = 205;
     [UIView animateWithDuration:.3f
                           delay:0
                         options: UIViewAnimationOptionCurveLinear
                      animations: ^{
                          _writeView.center = CGPointMake(_writeView.center.x, _writeView.center.y-height);
+                         _imoticonView.center = CGPointMake(_imoticonView.center.x, _imoticonView.center.y-height);
                          if ([[UIScreen mainScreen] bounds].size.height == 568) {
                              [_contentTextView setFrame:CGRectMake(_contentTextView.frame.origin.x, 131, 267, 251-100)];
                              [_contentTextView setContentSize:CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-100)];
@@ -168,12 +194,13 @@
 //    if (tap) {
 //        [_contentTextView removeGestureRecognizer:tap];
 //    }
-    int height = 198;
+    int height = 205;
     [UIView animateWithDuration:.3f
                           delay:0
                         options: UIViewAnimationOptionCurveLinear
                      animations: ^{
                          _writeView.center = CGPointMake(_writeView.center.x, _writeView.center.y+height);
+                         _imoticonView.center = CGPointMake(_imoticonView.center.x, _imoticonView.center.y+height);
                          if ([[UIScreen mainScreen] bounds].size.height == 568) {
                              [_contentTextView setFrame:originalRect];
                              [_contentTextView setContentSize:originalSize];

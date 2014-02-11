@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import <JSONKit.h>
 #import <FSExtendedAlertKit.h>
+#import "AFAppDotNetAPIClient.h"
+#import "MBProgressHUD.h"
 #define CLOUD1_SPEED 50
 #define CLOUD2_SPEED 25
 #define CLOUD3_SPEED 45
@@ -34,17 +36,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    int backGroundIdx = 1;
+    
     NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDate *date = [NSDate date];//datapicker date
     NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
     
     NSInteger hour = [dateComponents hour];
-    if (hour >= 6 && hour < 14) {
-        backGroundIdx = 1;
-    }else if(hour >= 14 && hour < 22){
+    int backGroundIdx = 3;
+    if (hour < 6) {
+        backGroundIdx = 3;
+    }else if(hour < 12 ){
         backGroundIdx = 2;
+    }else if(hour < 24){
+        backGroundIdx = 1;
     }else{
         backGroundIdx = 3;
     }
@@ -54,7 +59,7 @@
     NSTimer* timer =[NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(passwordCheck:) userInfo:NULL repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
-    [_snowView start];
+    //[_snowView start];
     [self startCloudAnimation];
     
     
@@ -110,8 +115,34 @@
         }], nil];
         [alert show];
     }
+    [self getStoryReplyes];
+}
+- (void)getStoryReplyes{
+    NSMutableArray* storyIdArr = [[NSMutableArray alloc] init];
+    for (NSDictionary* dic in [[StoryManager sharedSingleton] getStorys]) {
+        if ([dic objectForKey:@"reply"] == NULL) {
+             [storyIdArr addObject:[dic objectForKey:@"story_id"]];
+        }
+    }
+    if ([storyIdArr count] == 0) {
+        return ;
+    }
+    NSString* storyIdsStr = [storyIdArr componentsJoinedByString:@","];
+    NSLog(@"storyIdsStr : %@",storyIdsStr);
+    NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+    [parameters setObject:storyIdsStr forKey:@"story_list"];
     
- 
+    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getCommentedStorys" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        NSLog(@"eting/getCommentedStorys: %@",(NSDictionary *)responseObject);
+        NSMutableArray* storyArr = [responseObject objectForKey:@"stampedStoryList"];
+        for (NSDictionary* storyDic in storyArr) {
+            [[StoryManager sharedSingleton] addStoryReply:storyDic];
+        }
+        [_listView refreshView];
+    } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+        NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+        
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -119,6 +150,7 @@
     [super viewDidAppear:(BOOL)animated];
     
     [_mainView refreshView];
+    [_listView refreshView];
 }
 
 - (void)passwordCheck:(id)sender{
@@ -232,18 +264,20 @@
     [_mainView refreshView];
     [_writeView refreshView];
     [_listView refreshView];
-    
-    int backGroundIdx = 1;
+    [self getStoryReplyes];
     NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDate *date = [NSDate date];//datapicker date
     NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
     
     NSInteger hour = [dateComponents hour];
-    if (hour >= 6 && hour < 14) {
-        backGroundIdx = 1;
-    }else if(hour >= 14 && hour < 22){
+    int backGroundIdx = 3;
+    if (hour < 6) {
+        backGroundIdx = 3;
+    }else if(hour < 12 ){
         backGroundIdx = 2;
+    }else if(hour < 24){
+        backGroundIdx = 1;
     }else{
         backGroundIdx = 3;
     }

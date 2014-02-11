@@ -11,6 +11,9 @@
 #import "StoryManager.h"
 #import "StampViewController.h"
 #import "AppDelegate.h"
+#import "AFAppDotNetAPIClient.h"
+#import <FSExtendedAlertKit.h>
+#import "MBProgressHUD.h"
 #define RADIANS_TO_DEGREES(radians) ((radians) * (180.0 / M_PI))
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 @implementation MainView
@@ -44,11 +47,15 @@
     _etingCountLabel.text = [NSString stringWithFormat:@"%lu eting",(unsigned long)[storyArr count]];
     NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
     _stampCountLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[stampArr count]];
+    
     [UIView animateWithDuration:0.5 animations:^{
         if ([stampArr count] != 0) {
             [_spaceShipView setAlpha:1.0f];
+            [_spaceShipView setHidden:FALSE];
+            [_starBtn setHidden:TRUE];
         }else{
             [_spaceShipView setAlpha:0.0f];
+            [_starBtn setHidden:FALSE];
         }
     } completion:^(BOOL finished) {
         
@@ -71,12 +78,16 @@
     
 }
 - (IBAction)etingClick:(id)sender{
+    if (!self.parentViewCont.scrollView.isDragging) {
+        [self.parentViewCont.scrollView setContentOffset:CGPointMake(640, 0) animated:TRUE];
+    }
     
-    [self.parentViewCont.scrollView setContentOffset:CGPointMake(self.parentViewCont.scrollView.contentOffset.x+320, 0) animated:TRUE];
 }
 
 - (IBAction)listClick:(id)sender{
-    [self.parentViewCont.scrollView setContentOffset:CGPointMake(self.parentViewCont.scrollView.contentOffset.x-320, 0) animated:TRUE];
+    if (!self.parentViewCont.scrollView.isDragging) {
+        [self.parentViewCont.scrollView setContentOffset:CGPointMake(0, 0) animated:TRUE];
+    }
 }
 - (IBAction)settingClick:(id)sender{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -84,6 +95,35 @@
     UIViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
     viewCont.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.parentViewCont presentViewController:viewCont animated:TRUE completion:NULL];
+}
+- (IBAction)starClick:(id)sender{
+    NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id", nil];
+    [MBProgressHUD showHUDAddedTo:self animated:YES];
+    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getRandomStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        
+        NSLog(@"eting/getRandomStory: %@",(NSDictionary *)responseObject);
+        NSDictionary* saveReceiveDic = [responseObject objectForKey:@"recievedStory"];
+        if (saveReceiveDic != NULL) {
+            [[StoryManager sharedSingleton] saveStamp:saveReceiveDic];
+        }
+        [_starBtn setHidden:TRUE];
+        [self refreshView];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:60*5 target:self selector:@selector(resetStarBtn:) userInfo:nil repeats:FALSE];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+        NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+        [_starBtn setHidden:TRUE];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:60*5 target:self selector:@selector(resetStarBtn:) userInfo:nil repeats:FALSE];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    }];
+
+}
+- (void)resetStarBtn:(id)sender{
+    [_starBtn setHidden:FALSE];
 }
 #pragma mark BaseViewDelegate
 - (void)viewDidSlide{

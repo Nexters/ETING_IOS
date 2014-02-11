@@ -90,10 +90,12 @@
             NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
             
             NSInteger hour = [dateComponents hour];
-            if (hour >= 6 && hour < 14) {
-                backGroundIdx = 1;
-            }else if(hour >= 14 && hour < 22){
+            if (hour < 6) {
+                backGroundIdx = 3;
+            }else if(hour < 12 ){
                 backGroundIdx = 2;
+            }else if(hour < 24){
+                backGroundIdx = 1;
             }else{
                 backGroundIdx = 3;
             }
@@ -192,7 +194,7 @@
     return TRUE;
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView{
-    int keyBoardHeight = 162;
+    int keyBoardHeight = 202;
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGeusture:)];
     [textView addGestureRecognizer:tap];
     
@@ -202,12 +204,13 @@
                      animations: ^{
                          _etingBtn.center = CGPointMake(160, etingBtnPoint.y-keyBoardHeight-10);
                          _bgImgView2.center = CGPointMake(160, bgImg2Point.y-keyBoardHeight-10);
+                         [_bgImgView1 setFrame:CGRectMake(_bgImgView1.frame.origin.x, _bgImgView1.frame.origin.y, _bgImgView1.frame.size.width, _bgImgView1.frame.size.height-keyBoardHeight)];
                          if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                             _textView.frame = CGRectMake(25, 102, 270, 182);
-                             _textView.contentSize = CGSizeMake(270, 182);
+                             _textView.frame = CGRectMake(25, 102, 270, 148);
+                             _textView.contentSize = CGSizeMake(270, 148);
                          }else{
-                             _textView.frame = CGRectMake(25, 102, 270, 182-88);
-                             _textView.contentSize = CGSizeMake(270, 182-88);
+                             _textView.frame = CGRectMake(25, 102, 270, 148-88);
+                             _textView.contentSize = CGSizeMake(270, 148-88);
                          }
                      }
                      completion: ^(BOOL finished) { }];
@@ -216,19 +219,20 @@
     if (tap) {
         [textView removeGestureRecognizer:tap];
     }
+    int keyBoardHeight = 202;
     [UIView animateWithDuration:.3f
                           delay:0
                         options: UIViewAnimationOptionCurveLinear
                      animations: ^{
                          _etingBtn.center = CGPointMake(160, etingBtnPoint.y);
                          _bgImgView2.center = CGPointMake(160,bgImg2Point.y);
-                         
+                         [_bgImgView1 setFrame:CGRectMake(_bgImgView1.frame.origin.x, _bgImgView1.frame.origin.y, _bgImgView1.frame.size.width, _bgImgView1.frame.size.height+keyBoardHeight)];
                          if ([[UIScreen mainScreen] bounds].size.height == 568) {
-                             _textView.frame = CGRectMake(25, 102, 270, 323);
-                             _textView.contentSize = CGSizeMake(270, 182);
+                             _textView.frame = CGRectMake(25, 102, 270, 363);
+                             _textView.contentSize = CGSizeMake(270, 202);
                          }else{
-                             _textView.frame = CGRectMake(25, 102, 270, 323-88);
-                             _textView.contentSize = CGSizeMake(270, 182-88);
+                             _textView.frame = CGRectMake(25, 102, 270, 363-88);
+                             _textView.contentSize = CGSizeMake(270, 202-88);
                          }
                      }
                      completion: ^(BOOL finished) { }];

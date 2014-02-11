@@ -22,6 +22,7 @@
 - (NSMutableArray* )getStorys;
 - (BOOL)removeStory:(NSString*)storyId;
 - (void)addStoryReply:(NSDictionary*)replyDic;
+- (void)removeStoryReply:(NSDictionary*)replyDic;
 - (NSString *)getStoryForMail;
 - (NSMutableDictionary*)getStoryDictionary;
 - (BOOL)saveStamp:(NSDictionary *)dic;

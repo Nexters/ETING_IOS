@@ -34,6 +34,9 @@
                     <state key="normal" image="main_star02.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="starClick:" destination="deG-ns-dV5" eventType="touchUpInside" id="m6m-f2-W5k"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RXZ-VF-IRc">
                     <rect key="frame" x="257" y="484" width="40" height="40"/>

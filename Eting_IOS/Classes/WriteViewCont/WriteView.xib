@@ -28,7 +28,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Pob-9O-hIj">
-                    <rect key="frame" x="10" y="427" width="300" height="100"/>
+                    <rect key="frame" x="10" y="458" width="300" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="HHr-02-okB">
@@ -43,7 +43,7 @@
                     </connections>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EsR-i8-HbK">
-                    <rect key="frame" x="25" y="447" width="270" height="55"/>
+                    <rect key="frame" x="25" y="476" width="270" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -84,7 +84,7 @@
     </objects>
     <resources>
         <image name="bg01.jpg" width="320" height="568"/>
-        <image name="send_bg01.png" width="494" height="70"/>
+        <image name="send_bg01.png" width="300" height="40"/>
         <image name="send_btn01.png" width="440" height="80"/>
         <image name="splash_spaceship.png" width="70" height="70"/>
     </resources>

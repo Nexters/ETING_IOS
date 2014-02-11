@@ -10,6 +10,8 @@
 #import "StoryManager.h"
 #import "ListView.h"
 #import <FSExtendedAlertKit.h>
+#import "AFAppDotNetAPIClient.h"
+#import "MBProgressHUD.h"
 @interface ContentViewController ()
 
 @end
@@ -28,54 +30,154 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    NSString* contentStr = [_storyDic objectForKey:@"content"];
+
     NSInteger backIdx = _idx;
+    
     if (backIdx <= 0 || backIdx > 4) {
-        backIdx = 1;
+        backIdx = 3;
     }
     
     _bgAllImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02ld.jpg",(long)backIdx]];
-    UIImage *backImage = [UIImage imageNamed:[NSString stringWithFormat:@"list_bg%02ld.png",(long)backIdx+3]];
-    _bgImgView.image = [backImage stretchableImageWithLeftCapWidth:3 topCapHeight:0];
-    UIImage *backImage2 = [UIImage imageNamed:@"list_bg07.png"];
-    _bgImgView2.image = [backImage2 stretchableImageWithLeftCapWidth:3 topCapHeight:0];
-    //NSMutableArray* storyArr = [[StoryManager sharedSingleton] getStorys];
-    //_storyDic = [storyArr objectAtIndex:_idx];
     
-    _textView.text = [_storyDic objectForKey:@"content"];
+    _listTopBgImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"list_top_bg%02ld.png",(long)backIdx]];
+    UIImage *middleImgView = [UIImage imageNamed:@"list_middle_bg01.png"];
+    _listMiddleBgImgView.image = [middleImgView stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+    UIFont *myFont = [UIFont fontWithName:@"Helvetica" size:15];
+    CGSize contentSize = [contentStr sizeWithFont:myFont
+                               constrainedToSize:CGSizeMake(292, 2000)
+                                   lineBreakMode:NSLineBreakByWordWrapping];
+    [_listMiddleBgImgView setFrame:CGRectMake(_listMiddleBgImgView.frame.origin.x, _listMiddleBgImgView.frame.origin.y, _listMiddleBgImgView.frame.size.width, 100 + contentSize.height)];
+    [_listBottomBgImgView setFrame:CGRectMake(_listBottomBgImgView.frame.origin.x, _listTopBgImgView.frame.origin.y+_listTopBgImgView.frame.size.height+_listMiddleBgImgView.frame.size.height, _listBottomBgImgView.frame.size.width, _listBottomBgImgView.frame.size.height)];
+    
+    _textView.text = contentStr;
+    if (contentSize.height >= 2000) {
+        [_textView setFrame:CGRectMake(_textView.frame.origin.x, _textView.frame.origin.y, _textView.frame.size.width, 2000)];
+    }else{
+        [_textView setFrame:CGRectMake(_textView.frame.origin.x, _textView.frame.origin.y, _textView.frame.size.width, contentSize.height+40)];
+        [_textView setContentSize:CGSizeMake(_textView.frame.size.width, contentSize.height+40)];
+    }
+    
     _textView.font = [UIFont systemFontOfSize:15];
     _dateLabel.text = [_storyDic objectForKey:@"story_date"];
     
     if ([_storyDic objectForKey:@"reply"] == NULL) {
-        [_bgImgView2 setFrame:CGRectMake(_bgImgView2.frame.origin.x, _bgImgView2.frame.origin.y, _bgImgView2.frame.size.width, 70)];
-        [_bgImgView2 setHidden:TRUE];
+        [_feedbackTopBgImgView setHidden:TRUE];
+        [_feedbackMiddleBgImgView setHidden:TRUE];
+        [_feedbackBottomBgImgView setHidden:TRUE];
+        [_reportBtn setHidden:TRUE];
+        [_delBtn setHidden:TRUE];
+        NSArray* stampImgArr = [NSArray arrayWithObjects:_stampImgView1,_stampImgView2,_stampImgView3,_stampImgView4,_stampImgView5,_stampImgView6, nil];
+        for (int i=0; i < [stampImgArr count]; i++) {
+            UIImageView* imgView = [stampImgArr objectAtIndex:i];
+            [imgView setHidden:TRUE];
+        }
+        [_replyTextView setHidden:TRUE];
     }else{
-        _replyTextView.text = [[_storyDic objectForKey:@"reply"] objectForKey:@"comment"];
+        NSString* commentStr = [[_storyDic objectForKey:@"reply"] objectForKey:@"comment"];
+        [_feedbackTopBgImgView setFrame:CGRectMake(_feedbackTopBgImgView.frame.origin.x, _listBottomBgImgView.frame.origin.y + _listBottomBgImgView.frame.size.height + 11, _feedbackTopBgImgView.frame.size.width, _feedbackTopBgImgView.frame.size.height)];
+        UIImage *middleImgView = [UIImage imageNamed:@"list_middle_bg01.png"];
+        _feedbackMiddleBgImgView.image = [middleImgView stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+        CGSize contentSize = [commentStr sizeWithFont:myFont
+                                    constrainedToSize:CGSizeMake(292, 960)
+                                        lineBreakMode:NSLineBreakByWordWrapping];
+        [_feedbackMiddleBgImgView setFrame:CGRectMake(_feedbackMiddleBgImgView.frame.origin.x, _feedbackTopBgImgView.frame.origin.y + _feedbackTopBgImgView.frame.size.height , _feedbackMiddleBgImgView.frame.size.width, contentSize.height+60)];
+        [_feedbackBottomBgImgView setFrame:CGRectMake(_feedbackBottomBgImgView.frame.origin.x, _feedbackMiddleBgImgView.frame.origin.y + _feedbackMiddleBgImgView.frame.size.height, _feedbackBottomBgImgView.frame.size.width, _feedbackBottomBgImgView.frame.size.height)];
+        
+        _replyTextView.text = commentStr;
+        if (contentSize.height >= 960) {
+            [_replyTextView setFrame:CGRectMake(_replyTextView.frame.origin.x, _feedbackMiddleBgImgView.frame.origin.y+5, _replyTextView.frame.size.width, 960)];
+        }else{
+            [_replyTextView setFrame:CGRectMake(_replyTextView.frame.origin.x, _feedbackMiddleBgImgView.frame.origin.y+5, _replyTextView.frame.size.width, contentSize.height+40)];
+            [_replyTextView setContentSize:CGSizeMake(_replyTextView.frame.size.width, contentSize.height+40)];
+        }
         _replyTextView.font = [UIFont systemFontOfSize:15];
+        [_reportBtn setFrame:CGRectMake(_reportBtn.frame.origin.x, _feedbackBottomBgImgView.frame.origin.y-30, _reportBtn.frame.size.width, _reportBtn.frame.size.height)];
+        [_delBtn setFrame:CGRectMake(_delBtn.frame.origin.x, _feedbackBottomBgImgView.frame.origin.y-30, _delBtn.frame.size.width, _delBtn.frame.size.height)];
         NSString* stampStr = [[_storyDic objectForKey:@"reply"] objectForKey:@"stamps"];
+
         NSArray* stampArr = [stampStr componentsSeparatedByString:@","];
-        NSArray* stampImgArr = [NSArray arrayWithObjects:_stampImgView1,_stampImgView2,_stampImgView3, nil];
-        for (int i=0; i < 3; i++) {
+        NSArray* stampImgArr = [NSArray arrayWithObjects:_stampImgView1,_stampImgView2,_stampImgView3,_stampImgView4,_stampImgView5,_stampImgView6, nil];
+        for (int i=0; i < [stampImgArr count]; i++) {
             if (i < [stampArr count]) {
                 NSString* stampIdxStr = [stampArr objectAtIndex:i];
                 UIImageView* imgView = [stampImgArr objectAtIndex:i];
+                [imgView setFrame:CGRectMake(imgView.frame.origin.x, _feedbackTopBgImgView.frame.origin.y + 7, imgView.frame.size.width, imgView.frame.size.height)];
                 [imgView setHidden:FALSE];
-                imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"feed_btn%02d",stampIdxStr.intValue]];
+                imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"emotion_icon%02d_press.png",stampIdxStr.intValue]];
             }
         }
-        if ([[UIScreen mainScreen] bounds].size.height == 480) {
-            [_scrollView setFrame:CGRectMake(0, 0, 320, 480)];
-            [_scrollView setContentSize:CGSizeMake(320, 568)];
-        }
+        [_scrollView setFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height)];
+        [_scrollView setContentSize:CGSizeMake(320, _feedbackBottomBgImgView.frame.origin.y+20)];
     }
-	// Do any additional setup after loading the view.
-}
-
-
-- (IBAction)backClick:(id)sender{
-    NSLog(@"presentedViewController : %@",self.presentedViewController);
-    NSLog(@"presentingViewController : %@",self.presentingViewController);
     
+	
+}
+- (IBAction)reportClick:(id)sender
+{
+    FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"해당 댓글을 신고하시겠습니까?" cancelButton:[FSBlockButton blockButtonWithTitle:@"취소" block:^ {
+        
+    }] otherButtons:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+        NSLog(@"_storyDic : %@",[_storyDic debugDescription]);
+        NSString* commentIdStr = [NSString stringWithFormat:@"%@",[[_storyDic objectForKey:@"reply"] objectForKey:@"comment_id"]];
+        NSString* storyIdStr = [NSString stringWithFormat:@"%@",[_storyDic objectForKey:@"story_id"]];
+        NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+        [parameters setObject:commentIdStr forKey:@"comment_id"];
+        [parameters setObject:@"R" forKey:@"flag"];
+        [parameters setObject:storyIdStr forKey:@"story_id"];
+       
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/reportComment" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+            
+            NSLog(@"eting/reportComment: %@",(NSDictionary *)responseObject);
+            [_storyDic removeObjectForKey:@"reply"];
+            [[StoryManager sharedSingleton] removeStoryReply:_storyDic];
+            [self viewDidLoad];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+            NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+            FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"신고에 실패했습니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+                
+            }] otherButtons: nil];
+            [alert show];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+    }],nil];
+    [alert show];
+}
+- (IBAction)delCommentClick:(id)sender
+{
+    FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"해당 댓글을 삭제하시겠습니까?" cancelButton:[FSBlockButton blockButtonWithTitle:@"취소" block:^ {
+        
+    }] otherButtons:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+        NSString* commentIdStr = [NSString stringWithFormat:@"%@",[[_storyDic objectForKey:@"reply"] objectForKey:@"comment_id"]];
+        NSString* storyIdStr = [NSString stringWithFormat:@"%@",[_storyDic objectForKey:@"story_id"]];
+        NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+        [parameters setObject:commentIdStr forKey:@"comment_id"];
+        [parameters setObject:@"D" forKey:@"flag"];
+        [parameters setObject:storyIdStr forKey:@"story_id"];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/reportComment" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+            
+            NSLog(@"eting/reportComment: %@",(NSDictionary *)responseObject);
+            [_storyDic removeObjectForKey:@"reply"];
+            [[StoryManager sharedSingleton] removeStoryReply:_storyDic];
+            [self viewDidLoad];
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+            NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+            FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"삭제에 실패했습니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+                
+            }] otherButtons: nil];
+            
+            [alert show];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+    }],nil];
+    [alert show];
+}
+- (IBAction)backClick:(id)sender{
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 

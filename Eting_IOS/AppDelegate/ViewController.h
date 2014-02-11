@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController{
-    NSInteger tryCnt;
 }
 @property (weak, nonatomic) IBOutlet UIImageView* bgImgView;
 @property (weak, nonatomic) IBOutlet UIImageView* spaceImgView;
+- (void)AfterGetToken;
 @end

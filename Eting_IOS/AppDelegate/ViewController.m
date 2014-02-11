@@ -31,9 +31,7 @@ reply =     {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-    [[StoryManager sharedSingleton] addStoryReply:[NSDictionary dictionaryWithObjectsAndKeys:@"내용",@"comment",@"9599",@"story_id",@"1,2,3",@"stamps", nil]];
-    */
+    
     float spacePosY = 218;
     if ([[UIScreen mainScreen] bounds].size.height == 480) {
         _bgImgView.frame = CGRectMake(0, -35, _bgImgView.frame.size.width, _bgImgView.frame.size.height);
@@ -50,66 +48,47 @@ reply =     {
                              //_spaceImgView.center = CGPointMake(160, 218);
                          }
                      }];
-    /*
-    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
-    [dic setObject:@"jaeyoung" forKey:@"name"];
-    [dic writeToFile:path atomically:YES];
-    */
+}
+
+- (void)AfterGetToken{
     AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
-#if TARGET_IPHONE_SIMULATOR
-    appDelegate.deviceApnsToken = @"1234";
-#endif
-    
-    if(appDelegate.deviceApnsToken == NULL){
-        tryCnt++;
-        if (tryCnt > 3) {
-            FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"에러" message:@"푸시를 전송 할 수 없는 디바이스 입니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"Registration"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"] != NULL && ![[[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"] isEqualToString:@""]) {
+        NSTimer *timer = [NSTimer timerWithTimeInterval:SPLACE_TIME target:self selector:@selector(AfterSplash:) userInfo:nil repeats:FALSE];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    }else{
+        NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id",appDelegate.deviceApnsToken,@"reg_id",@"I",@"os", nil];
+        NSTimeInterval before = [[NSDate date] timeIntervalSince1970];
+        
+        [[AFAppDotNetAPIClient sharedClient] getPath:@"eting/registration" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+            
+            NSLog(@"eting/registration: %@",(NSDictionary *)responseObject);
+            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+                [[NSUserDefaults standardUserDefaults] setObject:uuidStr forKey:@"DeviceToken"];
+                [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"Registration"];
+                NSTimeInterval after = [[NSDate date] timeIntervalSince1970];
+                if (after - before < SPLACE_TIME) {
+                    NSTimer *timer = [NSTimer timerWithTimeInterval:SPLACE_TIME-(after-before) target:self selector:@selector(AfterSplash:) userInfo:nil repeats:FALSE];
+                    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+                }else{
+                    [self AfterSplash:NULL];
+                }
+            }else{
+                [[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"Registration"];
+                FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"회원가입" message:@"회원가입에 실패했습니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+                    exit(0);
+                }] otherButtons: nil];
+                
+                [alert show];
+            }
+        } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+            NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+            FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"서버 공사중입니다.\n 조금만 기다려주세요!!" cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
                 exit(0);
             }] otherButtons: nil];
             [alert show];
-        }else{
-            NSTimer *timer = [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(retryDeviceToken:) userInfo:nil repeats:FALSE];
-            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-        }
-    }
-    else{
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"Registration"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"] != NULL && ![[[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"] isEqualToString:@""]) {
-            NSTimer *timer = [NSTimer timerWithTimeInterval:SPLACE_TIME target:self selector:@selector(AfterSplash:) userInfo:nil repeats:FALSE];
-            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-        }else{
-            NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
-            NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id",appDelegate.deviceApnsToken,@"reg_id",@"I",@"os", nil];
-            NSTimeInterval before = [[NSDate date] timeIntervalSince1970];
-            
-            [[AFAppDotNetAPIClient sharedClient] getPath:@"eting/registration" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
-                
-                NSLog(@"eting/registration: %@",(NSDictionary *)responseObject);
-                if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
-                    [[NSUserDefaults standardUserDefaults] setObject:uuidStr forKey:@"DeviceToken"];
-                    [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"Registration"];
-                    NSTimeInterval after = [[NSDate date] timeIntervalSince1970];
-                    if (after - before < SPLACE_TIME) {
-                        NSTimer *timer = [NSTimer timerWithTimeInterval:SPLACE_TIME-(after-before) target:self selector:@selector(AfterSplash:) userInfo:nil repeats:FALSE];
-                        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-                    }else{
-                        [self AfterSplash:NULL];
-                    }
-                }else{
-                    [[NSUserDefaults standardUserDefaults] setBool:FALSE forKey:@"Registration"];
-                    FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"회원가입" message:@"회원가입에 실패했습니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
-                        exit(0);
-                    }] otherButtons: nil];
-                    
-                    [alert show];
-                }
-            } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
-                NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
-                FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"서버 공사중입니다.\n 조금만 기다려주세요!!" cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
-                    exit(0);
-                }] otherButtons: nil];
-                [alert show];
-            }];
-        }
+        }];
     }
 }
 - (void)AfterSplash:(id)sender{

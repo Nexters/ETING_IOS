@@ -34,6 +34,13 @@
         NSDictionary* inboxDic = [inboxStr objectFromJSONString];
         [[StoryManager sharedSingleton] saveStamp:inboxDic];
     }
+#if 1
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"123123123",@"comment",
+                                @"100",@"comment_id",
+                                @"1,2,3",@"stamps",
+                                @"1880554",@"story_id",nil];
+    [[StoryManager sharedSingleton] addStoryReply:dic];
+#endif
     return YES;
 }
 							
@@ -105,12 +112,15 @@
     NSLog(@"_deviceApnsToken %@",_deviceApnsToken);
     ViewController* viewCont = (ViewController* )self.window.rootViewController;
     if (viewCont) {
-        [viewCont viewDidLoad];
+        [viewCont AfterGetToken];
     }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error NS_AVAILABLE_IOS(3_0){
-    NSLog(@"didFailToRegisterForRemoteNotificationsWithError %@",[error debugDescription]);
+    FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"에러" message:@"푸시를 전송 할 수 없는 디바이스 입니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+        exit(0);
+    }] otherButtons: nil];
+    [alert show];
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
