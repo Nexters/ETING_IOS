@@ -45,67 +45,20 @@
     _dateLabel.text = [NSString stringWithFormat:@"%li. %02li. %02li",(long)year,(long)month, (long)day];
     NSMutableArray* storyArr = [[StoryManager sharedSingleton] getStorys];
     _etingCountLabel.text = [NSString stringWithFormat:@"%lu eting",(unsigned long)[storyArr count]];
-    _stampArr = [[StoryManager sharedSingleton] getStamps];
-    _stampCountLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[_stampArr count]];
+    NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
+    _stampCountLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[stampArr count]];
     
     [UIView animateWithDuration:0.5 animations:^{
-        if ([_stampArr count] != 0) {
+        if ([stampArr count] != 0) {
             [_spaceShipView setAlpha:1.0f];
-            [_starBtn setAlpha:0.0f];
+            [_starBtn setHidden:TRUE];
         }else{
             [_spaceShipView setAlpha:0.0f];
-            [_starBtn setAlpha:1.0f];
+            [_starBtn setHidden:FALSE];
         }
     } completion:^(BOOL finished) {
         
     }];
-}
-- (void)setStarTimer{
-    [UIView animateWithDuration:0.5 animations:^{
-        if ([_stampArr count] != 0) {
-            [_starBtn setAlpha:0.0f];
-            [_starBtn setTag:0];
-            starCheckTime = [[NSDate date] timeIntervalSince1970];
-        }else{
-            starCheckTime = [[NSDate date] timeIntervalSince1970];
-            [_starBtn setAlpha:1.0f];
-            [_starBtn setTag:0];
-            [_starBtn setImage:[UIImage imageNamed:@"star_icon01_1.png"] forState:UIControlStateNormal];
-        }
-    } completion:^(BOOL finished) {
-        if (timer == NULL) {
-            timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateStar:) userInfo:nil repeats:TRUE];
-            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-        }
-    }];
-}
-- (void)updateStar:(id)sender{
-    if ([_stampArr count] == 0) {
-        //NSLog(@"%lf",[[NSDate date] timeIntervalSince1970] - starCheckTime);
-        int timeInterval = 60;
-        if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval*5) {
-            [timer invalidate];
-            timer = NULL;
-            [_starBtn setTag:1];
-            [_starBtn setImage:[UIImage imageNamed:@"star_icon03.png"] forState:UIControlStateNormal];
-        }
-        else if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval*4) {
-            [_starBtn setImage:[UIImage imageNamed:@"star_icon02.png"] forState:UIControlStateNormal];
-        }
-        else if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval*3) {
-            [_starBtn setImage:[UIImage imageNamed:@"star_icon01_4.png"] forState:UIControlStateNormal];
-        }
-        else if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval*2) {
-            [_starBtn setImage:[UIImage imageNamed:@"star_icon01_3.png"] forState:UIControlStateNormal];
-        }
-        else if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval) {
-            [_starBtn setImage:[UIImage imageNamed:@"star_icon01_2.png"] forState:UIControlStateNormal];
-        }
-    }else{
-        [timer invalidate];
-        timer = NULL;
-        [_starBtn setTag:0];
-    }
     
 }
 
@@ -124,16 +77,12 @@
     
 }
 - (IBAction)etingClick:(id)sender{
-    if (!self.parentViewCont.scrollView.isDragging) {
-        [self.parentViewCont.scrollView setContentOffset:CGPointMake(640, 0) animated:TRUE];
-    }
     
+    [self.parentViewCont.scrollView setContentOffset:CGPointMake(self.parentViewCont.scrollView.contentOffset.x+320, 0) animated:TRUE];
 }
 
 - (IBAction)listClick:(id)sender{
-    if (!self.parentViewCont.scrollView.isDragging) {
-        [self.parentViewCont.scrollView setContentOffset:CGPointMake(0, 0) animated:TRUE];
-    }
+    [self.parentViewCont.scrollView setContentOffset:CGPointMake(self.parentViewCont.scrollView.contentOffset.x-320, 0) animated:TRUE];
 }
 - (IBAction)settingClick:(id)sender{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -143,28 +92,34 @@
     [self.parentViewCont presentViewController:viewCont animated:TRUE completion:NULL];
 }
 - (IBAction)starClick:(id)sender{
-    UIButton* btn = (UIButton*)sender;
-    if (btn.tag == 1) {
-        NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
+    NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id", nil];
+    [MBProgressHUD showHUDAddedTo:self animated:YES];
+    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getRandomStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
         
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id", nil];
-        [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getRandomStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
-            
-            NSLog(@"eting/getRandomStory: %@",(NSDictionary *)responseObject);
-            NSDictionary* saveReceiveDic = [responseObject objectForKey:@"recievedStory"];
-            if (saveReceiveDic != NULL) {
-                [[StoryManager sharedSingleton] saveStamp:saveReceiveDic];
-            }
-            [self refreshView];
-            [MBProgressHUD hideHUDForView:self animated:YES];
-        } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
-            [self refreshView];
-            [MBProgressHUD hideHUDForView:self animated:YES];
-        }];
-    }
-}
+        NSLog(@"eting/getRandomStory: %@",(NSDictionary *)responseObject);
+        NSDictionary* saveReceiveDic = [responseObject objectForKey:@"recievedStory"];
+        if (saveReceiveDic != NULL) {
+            [[StoryManager sharedSingleton] saveStamp:saveReceiveDic];
+        }
+        [_starBtn setHidden:TRUE];
+        [self refreshView];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:60*5 target:self selector:@selector(resetStarBtn:) userInfo:nil repeats:FALSE];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+        NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+        [_starBtn setHidden:TRUE];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:60*5 target:self selector:@selector(resetStarBtn:) userInfo:nil repeats:FALSE];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [MBProgressHUD hideHUDForView:self animated:YES];
+    }];
 
+}
+- (void)resetStarBtn:(id)sender{
+    [_starBtn setHidden:FALSE];
+}
 #pragma mark BaseViewDelegate
 - (void)viewDidSlide{
     NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
@@ -245,10 +200,11 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    // Drawing code
     [self runAnimation];
     //[self flashOn:_starBtn];
     [self refreshView];
-    [self setStarTimer];
+    
     
     CGAffineTransform rotationTransform = CGAffineTransformIdentity;
     rotationTransform = CGAffineTransformRotate(rotationTransform, DEGREES_TO_RADIANS(30));

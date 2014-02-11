@@ -39,7 +39,6 @@
     NSMutableDictionary* newStoryDic = [[StoryManager sharedSingleton] getStoryDictionary];
     _storyDic = newStoryDic;
     _storyArr = [[StoryManager sharedSingleton] getStorys];
-    NSLog(@"_storyArr : %@",[_storyArr debugDescription]);
     [_tableView reloadData];
     
     if ([_storyDic count] != 0) {

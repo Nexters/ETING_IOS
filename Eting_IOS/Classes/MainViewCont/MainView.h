@@ -10,6 +10,8 @@
 #import "BaseView.h"
 @interface MainView : BaseView
 {
+    NSTimeInterval starCheckTime;
+    NSTimer *timer;
 }
 @property (weak, nonatomic) IBOutlet UIView* spaceShipView;
 @property (weak, nonatomic) IBOutlet UIButton* spaceShipBtn;
@@ -23,7 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView* etingTextImgView;
 @property (weak, nonatomic) IBOutlet UIImageView* planetImgView;
 @property (weak, nonatomic) IBOutlet UIButton* etingBtn;
+@property (strong, nonatomic) NSMutableArray* stampArr;
 - (void)runAnimation;
 - (void)refreshView;
 - (IBAction)stampClick:(id)sender;
+- (void)setStarTimer;
 @end

@@ -10,6 +10,7 @@
 @class ListView;
 @interface ContentViewController : UIViewController
 {
+    CGPoint imoticonPoint[11];
 }
 @property (weak, nonatomic) IBOutlet UIScrollView* scrollView;
 @property (weak, nonatomic) IBOutlet UILabel* dateLabel;

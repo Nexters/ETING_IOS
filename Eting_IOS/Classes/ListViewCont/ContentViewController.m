@@ -30,6 +30,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    imoticonPoint[0] = CGPointMake(22+47*2, 423);
+    imoticonPoint[1] = CGPointMake(22+47*3, 423);
+    imoticonPoint[2] = CGPointMake(22+47*1, 423);
+    imoticonPoint[3] = CGPointMake(22+47*4, 423);
+    imoticonPoint[4] = CGPointMake(22,423);
+    imoticonPoint[5] = CGPointMake(22+47*5, 423);
+    imoticonPoint[6] = CGPointMake(22+47/2+47*2, 423);
+    imoticonPoint[7] = CGPointMake(22+47/2+47*3, 423);
+    imoticonPoint[8] = CGPointMake(22+47/2+47, 423);
+    imoticonPoint[9] = CGPointMake(22+47/2+47*4, 423);
+    imoticonPoint[10] = CGPointMake(22+47/2, 423);
+    
     NSString* contentStr = [_storyDic objectForKey:@"content"];
 
     NSInteger backIdx = _idx;
@@ -38,7 +50,7 @@
         backIdx = 3;
     }
     
-    _bgAllImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02ld.jpg",(long)backIdx]];
+    _bgAllImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02ld.jpg",[[StoryManager sharedSingleton] getTimeBackIdx]]];
     
     _listTopBgImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"list_top_bg%02ld.png",(long)backIdx]];
     UIImage *middleImgView = [UIImage imageNamed:@"list_middle_bg01.png"];
@@ -47,7 +59,7 @@
     CGSize contentSize = [contentStr sizeWithFont:myFont
                                constrainedToSize:CGSizeMake(292, 2000)
                                    lineBreakMode:NSLineBreakByWordWrapping];
-    [_listMiddleBgImgView setFrame:CGRectMake(_listMiddleBgImgView.frame.origin.x, _listMiddleBgImgView.frame.origin.y, _listMiddleBgImgView.frame.size.width, 100 + contentSize.height)];
+    [_listMiddleBgImgView setFrame:CGRectMake(_listMiddleBgImgView.frame.origin.x, _listMiddleBgImgView.frame.origin.y, _listMiddleBgImgView.frame.size.width, 70 + contentSize.height)];
     [_listBottomBgImgView setFrame:CGRectMake(_listBottomBgImgView.frame.origin.x, _listTopBgImgView.frame.origin.y+_listTopBgImgView.frame.size.height+_listMiddleBgImgView.frame.size.height, _listBottomBgImgView.frame.size.width, _listBottomBgImgView.frame.size.height)];
     
     _textView.text = contentStr;
@@ -58,7 +70,8 @@
         [_textView setContentSize:CGSizeMake(_textView.frame.size.width, contentSize.height+40)];
     }
     
-    _textView.font = [UIFont systemFontOfSize:15];
+    _textView.font = [UIFont fontWithName:@"Helvetica" size:15];
+    [_textView setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0f]];
     _dateLabel.text = [_storyDic objectForKey:@"story_date"];
     
     if ([_storyDic objectForKey:@"reply"] == NULL) {
@@ -67,6 +80,7 @@
         [_feedbackBottomBgImgView setHidden:TRUE];
         [_reportBtn setHidden:TRUE];
         [_delBtn setHidden:TRUE];
+        
         NSArray* stampImgArr = [NSArray arrayWithObjects:_stampImgView1,_stampImgView2,_stampImgView3,_stampImgView4,_stampImgView5,_stampImgView6, nil];
         for (int i=0; i < [stampImgArr count]; i++) {
             UIImageView* imgView = [stampImgArr objectAtIndex:i];
@@ -85,26 +99,32 @@
         [_feedbackBottomBgImgView setFrame:CGRectMake(_feedbackBottomBgImgView.frame.origin.x, _feedbackMiddleBgImgView.frame.origin.y + _feedbackMiddleBgImgView.frame.size.height, _feedbackBottomBgImgView.frame.size.width, _feedbackBottomBgImgView.frame.size.height)];
         
         _replyTextView.text = commentStr;
+        [_replyTextView setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0f]];
         if (contentSize.height >= 960) {
             [_replyTextView setFrame:CGRectMake(_replyTextView.frame.origin.x, _feedbackMiddleBgImgView.frame.origin.y+5, _replyTextView.frame.size.width, 960)];
         }else{
             [_replyTextView setFrame:CGRectMake(_replyTextView.frame.origin.x, _feedbackMiddleBgImgView.frame.origin.y+5, _replyTextView.frame.size.width, contentSize.height+40)];
             [_replyTextView setContentSize:CGSizeMake(_replyTextView.frame.size.width, contentSize.height+40)];
         }
-        _replyTextView.font = [UIFont systemFontOfSize:15];
-        [_reportBtn setFrame:CGRectMake(_reportBtn.frame.origin.x, _feedbackBottomBgImgView.frame.origin.y-30, _reportBtn.frame.size.width, _reportBtn.frame.size.height)];
-        [_delBtn setFrame:CGRectMake(_delBtn.frame.origin.x, _feedbackBottomBgImgView.frame.origin.y-30, _delBtn.frame.size.width, _delBtn.frame.size.height)];
+        _replyTextView.font = [UIFont fontWithName:@"Helvetica" size:15];
+        [_reportBtn setFrame:CGRectMake(_reportBtn.frame.origin.x, _feedbackBottomBgImgView.frame.origin.y-20, _reportBtn.frame.size.width, _reportBtn.frame.size.height)];
+        [_delBtn setFrame:CGRectMake(_delBtn.frame.origin.x, _feedbackBottomBgImgView.frame.origin.y-20, _delBtn.frame.size.width, _delBtn.frame.size.height)];
         NSString* stampStr = [[_storyDic objectForKey:@"reply"] objectForKey:@"stamps"];
-
         NSArray* stampArr = [stampStr componentsSeparatedByString:@","];
         NSArray* stampImgArr = [NSArray arrayWithObjects:_stampImgView1,_stampImgView2,_stampImgView3,_stampImgView4,_stampImgView5,_stampImgView6, nil];
         for (int i=0; i < [stampImgArr count]; i++) {
             if (i < [stampArr count]) {
                 NSString* stampIdxStr = [stampArr objectAtIndex:i];
                 UIImageView* imgView = [stampImgArr objectAtIndex:i];
-                [imgView setFrame:CGRectMake(imgView.frame.origin.x, _feedbackTopBgImgView.frame.origin.y + 7, imgView.frame.size.width, imgView.frame.size.height)];
+                
                 [imgView setHidden:FALSE];
                 imgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"emotion_icon%02d_press.png",stampIdxStr.intValue]];
+                if ([stampArr count] % 2 == 1) {
+                    [imgView setFrame:CGRectMake(imoticonPoint[i+6].x, _feedbackTopBgImgView.frame.origin.y + 7, imgView.frame.size.width, imgView.frame.size.height)];
+                }else{
+                    [imgView setFrame:CGRectMake(imoticonPoint[i].x, _feedbackTopBgImgView.frame.origin.y + 7, imgView.frame.size.width, imgView.frame.size.height)];
+                }
+                
             }
         }
         [_scrollView setFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height)];

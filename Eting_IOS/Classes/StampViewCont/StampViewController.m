@@ -32,7 +32,7 @@
     [super viewDidLoad];
     
     NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
-    stampDic = [stampArr objectAtIndex:0];
+    stampDic = [stampArr objectAtIndex:[stampArr count]-1];
     NSLog(@"stampDic : %@",[stampDic debugDescription]);
     _dateLabel.text = [NSString stringWithFormat:@"%@    %@",[stampDic objectForKey:@"story_date"],[stampDic objectForKey:@"story_time"]];
     _contentTextView.text = [NSString stringWithFormat:@"%@",[stampDic objectForKey:@"content"]];
@@ -42,6 +42,7 @@
      */
     originalRect = _contentTextView.frame;
     originalSize = _contentTextView.contentSize;
+    [_contentTextView setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0f]];
     if ([[UIScreen mainScreen] bounds].size.height == 480) {
         _contentTextView.frame = CGRectMake(_contentTextView.frame.origin.x, _contentTextView.frame.origin.y, _contentTextView.frame.size.width, _contentTextView.frame.size.height-10);
         _contentTextView.contentSize = CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-10);
@@ -140,27 +141,32 @@
     }
 }
 - (IBAction)passCick:(id)sender{
-    [[StoryManager sharedSingleton] removeStamp:[stampDic objectForKey:@"story_id"]];
-    NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
-    if ([stampArr count] == 0) {
-        [self dismissViewControllerAnimated:TRUE completion:nil];
-        return  ;
-    }
-    [UIView transitionWithView:self.view duration:1.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void){
-    
-        stampDic = [stampArr objectAtIndex:0];
-        _dateLabel.text = [NSString stringWithFormat:@"%@    %@",[stampDic objectForKey:@"story_date"],[stampDic objectForKey:@"story_time"]];
-        _contentTextView.text = [NSString stringWithFormat:@"%@",[stampDic objectForKey:@"content"]];
-        originalRect = _contentTextView.frame;
-        originalSize = _contentTextView.contentSize;
-        if ([[UIScreen mainScreen] bounds].size.height == 480) {
-            _contentTextView.frame = CGRectMake(_contentTextView.frame.origin.x, _contentTextView.frame.origin.y, _contentTextView.frame.size.width, _contentTextView.frame.size.height-10);
-            _contentTextView.contentSize = CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-10);
-        }
-        _contentTextView.font = [UIFont systemFontOfSize:15];
-    }completion:^(BOOL finished){
+    FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"다른 사람에게 메세지를 넘기시겠습니까?" cancelButton:[FSBlockButton blockButtonWithTitle:@"취소" block:^ {
         
-    }];
+    }] otherButtons:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+        [[StoryManager sharedSingleton] removeStamp:[stampDic objectForKey:@"story_id"]];
+        NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
+        if ([stampArr count] == 0) {
+            [self dismissViewControllerAnimated:TRUE completion:nil];
+            return  ;
+        }
+        [UIView transitionWithView:self.view duration:1.5 options:UIViewAnimationOptionTransitionCurlUp animations:^(void){
+            
+            stampDic = [stampArr objectAtIndex:[stampArr count]-1];
+            _dateLabel.text = [NSString stringWithFormat:@"%@    %@",[stampDic objectForKey:@"story_date"],[stampDic objectForKey:@"story_time"]];
+            _contentTextView.text = [NSString stringWithFormat:@"%@",[stampDic objectForKey:@"content"]];
+            originalRect = _contentTextView.frame;
+            originalSize = _contentTextView.contentSize;
+            if ([[UIScreen mainScreen] bounds].size.height == 480) {
+                _contentTextView.frame = CGRectMake(_contentTextView.frame.origin.x, _contentTextView.frame.origin.y, _contentTextView.frame.size.width, _contentTextView.frame.size.height-10);
+                _contentTextView.contentSize = CGSizeMake(_contentTextView.contentSize.width, _contentTextView.contentSize.height-10);
+            }
+            _contentTextView.font = [UIFont systemFontOfSize:15];
+        }completion:^(BOOL finished){
+            
+        }];
+    }],nil];
+    [alert show];
 }
 
 #pragma mark UITextViewDelegate

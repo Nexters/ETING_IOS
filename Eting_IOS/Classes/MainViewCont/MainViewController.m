@@ -12,7 +12,6 @@
 #import <JSONKit.h>
 #import <FSExtendedAlertKit.h>
 #import "AFAppDotNetAPIClient.h"
-#import "MBProgressHUD.h"
 #define CLOUD1_SPEED 50
 #define CLOUD2_SPEED 25
 #define CLOUD3_SPEED 45
@@ -36,30 +35,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    NSInteger backGroundIdx = [[StoryManager sharedSingleton] getTimeBackIdx];
     
-    NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDate *date = [NSDate date];//datapicker date
-    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
-    
-    NSInteger hour = [dateComponents hour];
-    int backGroundIdx = 3;
-    if (hour < 6) {
-        backGroundIdx = 3;
-    }else if(hour < 12 ){
-        backGroundIdx = 2;
-    }else if(hour < 24){
-        backGroundIdx = 1;
-    }else{
-        backGroundIdx = 3;
-    }
-    _backImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02d.jpg",backGroundIdx]];
+    _backImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02d.jpg",(int)backGroundIdx]];
     
     
     NSTimer* timer =[NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(passwordCheck:) userInfo:NULL repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     
-    //[_snowView start];
+    [_snowView start];
     [self startCloudAnimation];
     
     
@@ -121,7 +106,7 @@
     NSMutableArray* storyIdArr = [[NSMutableArray alloc] init];
     for (NSDictionary* dic in [[StoryManager sharedSingleton] getStorys]) {
         if ([dic objectForKey:@"reply"] == NULL) {
-             [storyIdArr addObject:[dic objectForKey:@"story_id"]];
+            [storyIdArr addObject:[dic objectForKey:@"story_id"]];
         }
     }
     if ([storyIdArr count] == 0) {
@@ -130,11 +115,11 @@
     NSString* storyIdsStr = [storyIdArr componentsJoinedByString:@","];
     NSLog(@"storyIdsStr : %@",storyIdsStr);
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-    [parameters setObject:storyIdsStr forKey:@"story_list"];
+    [parameters setObject:storyIdsStr forKey:@"storyList"];
     
     [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getCommentedStorys" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
         NSLog(@"eting/getCommentedStorys: %@",(NSDictionary *)responseObject);
-        NSMutableArray* storyArr = [responseObject objectForKey:@"stampedStoryList"];
+        NSMutableArray* storyArr = [responseObject objectForKey:@"ReplyList"];
         for (NSDictionary* storyDic in storyArr) {
             [[StoryManager sharedSingleton] addStoryReply:storyDic];
         }
@@ -144,13 +129,12 @@
         
     }];
 }
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:(BOOL)animated];
     
     [_mainView refreshView];
-    [_listView refreshView];
+    [_mainView setStarTimer];
 }
 
 - (void)passwordCheck:(id)sender{
@@ -265,23 +249,8 @@
     [_writeView refreshView];
     [_listView refreshView];
     [self getStoryReplyes];
-    NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDate *date = [NSDate date];//datapicker date
-    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
-    
-    NSInteger hour = [dateComponents hour];
-    int backGroundIdx = 3;
-    if (hour < 6) {
-        backGroundIdx = 3;
-    }else if(hour < 12 ){
-        backGroundIdx = 2;
-    }else if(hour < 24){
-        backGroundIdx = 1;
-    }else{
-        backGroundIdx = 3;
-    }
-    _backImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02d.jpg",backGroundIdx]];
+    NSInteger backGroundIdx = [[StoryManager sharedSingleton] getTimeBackIdx];
+    _backImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02d.jpg",(int)backGroundIdx]];
 }
 - (void)didReceiveMemoryWarning
 {

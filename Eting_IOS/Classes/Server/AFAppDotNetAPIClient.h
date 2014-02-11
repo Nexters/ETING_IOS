@@ -23,6 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
 #define BASE_URL @"http://e-ting.me"
+//#define BASE_URL @"http://58.123.141.190:8080"
 //#define RAILS_BASE_URL @"http://192.168.0.124:3000"
 @interface AFAppDotNetAPIClient : AFHTTPClient
 + (AFAppDotNetAPIClient *)sharedClient;

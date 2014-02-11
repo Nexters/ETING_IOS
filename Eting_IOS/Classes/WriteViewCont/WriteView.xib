@@ -32,7 +32,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="HHr-02-okB">
-                    <rect key="frame" x="30" y="121" width="270" height="323"/>
+                    <rect key="frame" x="30" y="111" width="270" height="323"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
@@ -55,7 +55,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.01.04" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l5S-88-itm">
-                    <rect key="frame" x="30" y="82" width="146" height="21"/>
+                    <rect key="frame" x="30" y="76" width="146" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,7 +85,7 @@
     <resources>
         <image name="bg01.jpg" width="320" height="568"/>
         <image name="send_bg01.png" width="300" height="40"/>
-        <image name="send_btn01.png" width="440" height="80"/>
+        <image name="send_btn01.png" width="270" height="57"/>
         <image name="splash_spaceship.png" width="70" height="70"/>
     </resources>
 </document>

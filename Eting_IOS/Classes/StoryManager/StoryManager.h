@@ -30,4 +30,5 @@
 - (BOOL)removeStamp:(NSString*)storyId;
 - (NSString*)todayKey;
 - (NSString*)yearMonthKey:(NSString*)dateStr;
+- (NSInteger)getTimeBackIdx;
 @end

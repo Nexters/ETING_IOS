@@ -34,7 +34,8 @@
         NSDictionary* inboxDic = [inboxStr objectFromJSONString];
         [[StoryManager sharedSingleton] saveStamp:inboxDic];
     }
-#if 1
+    
+#if 0
     NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"123123123",@"comment",
                                 @"100",@"comment_id",
                                 @"1,2,3",@"stamps",

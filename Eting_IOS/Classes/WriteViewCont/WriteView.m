@@ -29,6 +29,7 @@
     etingBtnPoint = _etingBtn.center;
     bgImg2Point = _bgImgView2.center;
     _textView.font = [UIFont systemFontOfSize:15];
+    [_textView setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0f]];
 }
 - (IBAction)backClick:(id)sender
 {
@@ -83,24 +84,9 @@
         
         NSMutableDictionary* saveMyStroyDic = [[responseObject objectForKey:@"myStory"] mutableCopy];
         if (saveMyStroyDic != NULL) {
-            int backGroundIdx = 1;
-            NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-            NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-            NSDate *date = [NSDate date];//datapicker date
-            NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
+            NSInteger backGroundIdx = [[StoryManager sharedSingleton] getTimeBackIdx];
             
-            NSInteger hour = [dateComponents hour];
-            if (hour < 6) {
-                backGroundIdx = 3;
-            }else if(hour < 12 ){
-                backGroundIdx = 2;
-            }else if(hour < 24){
-                backGroundIdx = 1;
-            }else{
-                backGroundIdx = 3;
-            }
-            
-            [saveMyStroyDic setObject:[[NSNumber alloc] initWithInt:backGroundIdx] forKey:@"ColorIdx"];
+            [saveMyStroyDic setObject:[[NSNumber alloc] initWithInt:(int)backGroundIdx] forKey:@"ColorIdx"];
             [[StoryManager sharedSingleton] saveStory:saveMyStroyDic date:[[StoryManager sharedSingleton] todayKey]];
      
         }
@@ -134,7 +120,7 @@
     NSInteger year = [dateComponents year];
     NSInteger month = [dateComponents month];
     NSInteger day = [dateComponents day];
-    _dateLabel.text = [NSString stringWithFormat:@"%li. %02li. %02li",(long)year,(long)month, (long)day];
+    _dateLabel.text = [NSString stringWithFormat:@"%li-%02li-%02li",(long)year,(long)month, (long)day];
 }
 - (void)writeComplete:(id)sender{
     [self.parentViewCont.mainView viewDidSlide];
@@ -224,8 +210,11 @@
                           delay:0
                         options: UIViewAnimationOptionCurveLinear
                      animations: ^{
-                         _etingBtn.center = CGPointMake(160, etingBtnPoint.y);
-                         _bgImgView2.center = CGPointMake(160,bgImg2Point.y);
+                         //_etingBtn.center = CGPointMake(160, etingBtnPoint.y);
+                         //_bgImgView2.center = CGPointMake(160,bgImg2Point.y);
+                         _etingBtn.center = CGPointMake(160, _etingBtn.center.y+keyBoardHeight+10);
+                         _bgImgView2.center = CGPointMake(160,_bgImgView2.center.y+keyBoardHeight+10);
+                         
                          [_bgImgView1 setFrame:CGRectMake(_bgImgView1.frame.origin.x, _bgImgView1.frame.origin.y, _bgImgView1.frame.size.width, _bgImgView1.frame.size.height+keyBoardHeight)];
                          if ([[UIScreen mainScreen] bounds].size.height == 568) {
                              _textView.frame = CGRectMake(25, 102, 270, 363);

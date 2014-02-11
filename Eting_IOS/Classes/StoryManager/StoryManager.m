@@ -192,7 +192,24 @@
     }
     return FALSE;
 }
-
+- (NSInteger)getTimeBackIdx{
+    NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDate *date = [NSDate date];//datapicker date
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
+    NSInteger hour = [dateComponents hour];
+    int backGroundIdx = 3;
+    if (hour < 6) {
+        backGroundIdx = 3;
+    }else if(hour < 12 ){
+        backGroundIdx = 2;
+    }else if(hour < 24){
+        backGroundIdx = 1;
+    }else{
+        backGroundIdx = 3;
+    }
+    return backGroundIdx;
+}
 - (NSString*)todayKey{
     NSCalendar *calendar= [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSCalendarUnit unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
