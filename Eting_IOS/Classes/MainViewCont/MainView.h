@@ -30,4 +30,5 @@
 - (void)refreshView;
 - (IBAction)stampClick:(id)sender;
 - (void)setStarTimer;
+- (void)updateStar:(id)sender;
 @end

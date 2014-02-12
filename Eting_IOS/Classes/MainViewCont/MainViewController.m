@@ -249,6 +249,7 @@
     [_writeView refreshView];
     [_listView refreshView];
     [self getStoryReplyes];
+    [_mainView updateStar:NULL];
     NSInteger backGroundIdx = [[StoryManager sharedSingleton] getTimeBackIdx];
     _backImgView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%02d.jpg",(int)backGroundIdx]];
 }
