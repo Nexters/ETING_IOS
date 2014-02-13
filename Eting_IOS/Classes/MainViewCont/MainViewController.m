@@ -134,7 +134,7 @@
     [super viewDidAppear:(BOOL)animated];
     
     [_mainView refreshView];
-    [_mainView setStarTimer];
+    //[_mainView setStarTimer];
 }
 
 - (void)passwordCheck:(id)sender{

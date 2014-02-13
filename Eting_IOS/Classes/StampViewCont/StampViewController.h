@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class MainView;
 @interface StampViewController : UIViewController{
     NSDictionary* stampDic;
     UITapGestureRecognizer* tap;
@@ -28,4 +28,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView* bgImgView1;
 @property (weak, nonatomic) IBOutlet UIView* writeView;
 @property (weak, nonatomic) IBOutlet UIView* imoticonView;
+@property (strong, nonatomic) MainView* mainView;
 @end

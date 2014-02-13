@@ -11,7 +11,7 @@
 #import "AFAppDotNetAPIClient.h"
 #import "MBProgressHUD.h"
 #import <FSExtendedAlertKit.h>
-
+#import "MainView.h"
 @interface StampViewController ()
 
 @end
@@ -117,6 +117,7 @@
         
         NSLog(@"eting/saveStamp: %@",(NSDictionary *)responseObject);
         [[StoryManager sharedSingleton] removeStamp:storyIdStr];
+        [_mainView setStarTimer];
         [self dismissViewControllerAnimated:TRUE completion:nil];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
@@ -147,6 +148,7 @@
         [[StoryManager sharedSingleton] removeStamp:[stampDic objectForKey:@"story_id"]];
         NSMutableArray* stampArr = [[StoryManager sharedSingleton] getStamps];
         if ([stampArr count] == 0) {
+            [_mainView setStarTimer];
             [self dismissViewControllerAnimated:TRUE completion:nil];
             return  ;
         }

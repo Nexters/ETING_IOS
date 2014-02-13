@@ -61,6 +61,8 @@
     }];
 }
 - (void)setStarTimer{
+    NSLog(@"setStarTimer");
+    _stampArr = [[StoryManager sharedSingleton] getStamps];
     [UIView animateWithDuration:0.5 animations:^{
         if ([_stampArr count] != 0) {
             [_starBtn setAlpha:0.0f];
@@ -73,7 +75,7 @@
             [_starBtn setImage:[UIImage imageNamed:@"star_icon01_1.png"] forState:UIControlStateNormal];
         }
     } completion:^(BOOL finished) {
-        if (timer == NULL) {
+        if (timer == NULL && [[NSDate date] timeIntervalSince1970] - starCheckTime < 10.0f) {
             timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateStar:) userInfo:nil repeats:TRUE];
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         }
@@ -87,6 +89,7 @@
             [timer invalidate];
             timer = NULL;
             [_starBtn setTag:1];
+            NSLog(@"TIMER NIL1");
             [_starBtn setImage:[UIImage imageNamed:@"star_icon03.png"] forState:UIControlStateNormal];
         }
         else if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval*4) {
@@ -105,6 +108,7 @@
         [timer invalidate];
         timer = NULL;
         [_starBtn setTag:0];
+        NSLog(@"TIMER NIL2");
     }
     
 }
@@ -115,6 +119,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
         StampViewController* viewCont = [storyboard instantiateViewControllerWithIdentifier:@"StampViewController"];
+        viewCont.mainView = self;
         //viewCont.modalTransitionStyle = UIModalTransitionStylePartialCurl;
         viewCont.view.backgroundColor = [UIColor clearColor];
         self.parentViewCont.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -248,7 +253,10 @@
     [self runAnimation];
     //[self flashOn:_starBtn];
     [self refreshView];
-    [self setStarTimer];
+    if (!isFristStartTimer) {
+        [self setStarTimer];
+        isFristStartTimer = TRUE;
+    }
     
     CGAffineTransform rotationTransform = CGAffineTransformIdentity;
     rotationTransform = CGAffineTransformRotate(rotationTransform, DEGREES_TO_RADIANS(30));

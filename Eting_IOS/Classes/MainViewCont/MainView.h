@@ -12,6 +12,7 @@
 {
     NSTimeInterval starCheckTime;
     NSTimer *timer;
+    BOOL isFristStartTimer;
 }
 @property (weak, nonatomic) IBOutlet UIView* spaceShipView;
 @property (weak, nonatomic) IBOutlet UIButton* spaceShipBtn;
