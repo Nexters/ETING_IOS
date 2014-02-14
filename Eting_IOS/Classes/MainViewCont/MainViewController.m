@@ -134,6 +134,7 @@
     [super viewDidAppear:(BOOL)animated];
     
     [_mainView refreshView];
+    [_listView refreshView];
     //[_mainView setStarTimer];
 }
 
