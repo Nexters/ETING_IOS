@@ -191,7 +191,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		60BC04BAEB5144AE97F3F0EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		109F5FB4E8D22939374629BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD10CC161872FB3800EF30F4 /* Eting_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eting_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD10CC191872FB3800EF30F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD10CC1B1872FB3800EF30F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -389,6 +389,7 @@
 		CDE5001E18771474002F18C2 /* StoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryManager.h; sourceTree = "<group>"; };
 		CDE5001F18771474002F18C2 /* StoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryManager.m; sourceTree = "<group>"; };
 		F1966F5520634C93B65D98D3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8D4C0DEED53C9ED45A05F0F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +418,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01F4DE87B3429AD67CAEE18F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8D4C0DEED53C9ED45A05F0F /* Pods.debug.xcconfig */,
+				109F5FB4E8D22939374629BB /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD10CC0D1872FB3800EF30F4 = {
 			isa = PBXGroup;
 			children = (
@@ -424,7 +434,7 @@
 				CD10CC3E1872FB3800EF30F4 /* Eting_IOSTests */,
 				CD10CC181872FB3800EF30F4 /* Frameworks */,
 				CD10CC171872FB3800EF30F4 /* Products */,
-				60BC04BAEB5144AE97F3F0EF /* Pods.xcconfig */,
+				01F4DE87B3429AD67CAEE18F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1033,7 +1043,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		745DAE83D72345E49540F62D /* Check Pods Manifest.lock */ = {
@@ -1207,8 +1217,9 @@
 		};
 		CD10CC491872FB3800EF30F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60BC04BAEB5144AE97F3F0EF /* Pods.xcconfig */;
+			baseConfigurationReference = F8D4C0DEED53C9ED45A05F0F /* Pods.debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ju Young Hong (CX2B64UU5J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ju Young Hong (CX2B64UU5J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1223,8 +1234,9 @@
 		};
 		CD10CC4A1872FB3800EF30F4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60BC04BAEB5144AE97F3F0EF /* Pods.xcconfig */;
+			baseConfigurationReference = 109F5FB4E8D22939374629BB /* Pods.release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ju Young Hong (CX2B64UU5J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ju Young Hong (CX2B64UU5J)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

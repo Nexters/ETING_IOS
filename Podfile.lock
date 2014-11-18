@@ -11,9 +11,9 @@ DEPENDENCIES:
   - MBProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
-  FSExtendedAlertKit: f4e7dc5f0feccfa280d1f88492e8f01e8e30b97f
-  JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
+  AFNetworking: 5f5b2a731d6fc2082b8abc63d40fcaed5482c42f
+  FSExtendedAlertKit: c87837d307dbf8be0dd2f432960262413530d5b2
+  JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.34.4

@@ -42,6 +42,12 @@
                                 @"1880554",@"story_id",nil];
     [[StoryManager sharedSingleton] addStoryReply:dic];
 #endif
+#if TARGET_IPHONE_SIMULATOR
+    ViewController* viewCont = (ViewController* )self.window.rootViewController;
+    if (viewCont) {
+        [viewCont AfterGetToken];
+    }
+#endif
     return YES;
 }
 							
