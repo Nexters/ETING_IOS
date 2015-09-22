@@ -52,19 +52,45 @@ reply =     {
 
 - (void)AfterGetToken{
     AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
+    NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
+    //deviceId = NULL;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"Registration"] && deviceId != NULL && ![deviceId isEqualToString:@""]) {
+        //init!!!
+        NSDictionary *parameters = [
+            NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"device_uuid",
+            deviceId,@"device_id", nil
+        ];
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"Registration"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"] != NULL && ![[[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceToken"] isEqualToString:@""]) {
-        NSTimer *timer = [NSTimer timerWithTimeInterval:SPLACE_TIME target:self selector:@selector(AfterSplash:) userInfo:nil repeats:FALSE];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        [[AFAppDotNetAPIClient sharedClient] getPath:@"eting/init" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+            
+            NSLog(@"eting/init: %@",(NSDictionary *)responseObject);
+            NSDictionary* adDic = [responseObject objectForKey:@"ad"];
+            [[NSUserDefaults standardUserDefaults] setObject:adDic forKey:@"adDic"];
+            NSLog(@"adDic: %@",adDic);
+            NSLog(@"deviceId: %@",deviceId);
+
+            NSTimer *timer = [NSTimer timerWithTimeInterval:SPLACE_TIME target:self selector:@selector(AfterSplash:) userInfo:nil repeats:FALSE];
+            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+            
+        } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
+            NSLog(@"[HTTPClient Error]: %@", error.localizedDescription);
+            FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"이팅" message:@"서버 공사중입니다.\n 조금만 기다려주세요!!" cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
+                exit(0);
+            }] otherButtons: nil];
+            [alert show];
+        }];
+        //init end
     }else{
-        NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id",appDelegate.deviceApnsToken,@"reg_id",@"I",@"os", nil];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"device_uuid",appDelegate.deviceApnsToken,@"reg_id",@"I",@"os", nil];
         NSTimeInterval before = [[NSDate date] timeIntervalSince1970];
         
         [[AFAppDotNetAPIClient sharedClient] getPath:@"eting/registration" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
             
             NSLog(@"eting/registration: %@",(NSDictionary *)responseObject);
             if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+                NSString *deviceId = [responseObject objectForKey:@"device_id"];
+                [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:@"DeviceId"];
                 [[NSUserDefaults standardUserDefaults] setObject:uuidStr forKey:@"DeviceToken"];
                 [[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"Registration"];
                 NSTimeInterval after = [[NSDate date] timeIntervalSince1970];

@@ -141,15 +141,19 @@
         NSLog(@"_storyDic : %@",[_storyDic debugDescription]);
         NSString* commentIdStr = [NSString stringWithFormat:@"%@",[[_storyDic objectForKey:@"reply"] objectForKey:@"comment_id"]];
         NSString* storyIdStr = [NSString stringWithFormat:@"%@",[_storyDic objectForKey:@"story_id"]];
+        NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
+
         NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-        [parameters setObject:commentIdStr forKey:@"comment_id"];
-        [parameters setObject:@"R" forKey:@"flag"];
+        [parameters setObject:commentIdStr forKey:@"reply_id"];
         [parameters setObject:storyIdStr forKey:@"story_id"];
-       
+        [parameters setObject:deviceId forKey:@"device_id"];
+        [parameters setObject:_replyTextView.text forKey:@"reply_content"];
+
+
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/reportComment" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/reportReply" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
             
-            NSLog(@"eting/reportComment: %@",(NSDictionary *)responseObject);
+            NSLog(@"eting/reportReply: %@",(NSDictionary *)responseObject);
             [_storyDic removeObjectForKey:@"reply"];
             [[StoryManager sharedSingleton] removeStoryReply:_storyDic];
             [self viewDidLoad];
@@ -172,14 +176,17 @@
     }] otherButtons:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
         NSString* commentIdStr = [NSString stringWithFormat:@"%@",[[_storyDic objectForKey:@"reply"] objectForKey:@"comment_id"]];
         NSString* storyIdStr = [NSString stringWithFormat:@"%@",[_storyDic objectForKey:@"story_id"]];
+        NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
         NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
-        [parameters setObject:commentIdStr forKey:@"comment_id"];
-        [parameters setObject:@"D" forKey:@"flag"];
+        [parameters setObject:commentIdStr forKey:@"reply_id"];
         [parameters setObject:storyIdStr forKey:@"story_id"];
+        [parameters setObject:deviceId forKey:@"device_id"];
+        [parameters setObject:_replyTextView.text forKey:@"reply_content"];
+
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/reportComment" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/deleteReply" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
             
-            NSLog(@"eting/reportComment: %@",(NSDictionary *)responseObject);
+            NSLog(@"eting/deleteReply: %@",(NSDictionary *)responseObject);
             [_storyDic removeObjectForKey:@"reply"];
             [[StoryManager sharedSingleton] removeStoryReply:_storyDic];
             [self viewDidLoad];

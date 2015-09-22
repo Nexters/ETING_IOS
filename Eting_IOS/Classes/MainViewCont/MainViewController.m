@@ -117,8 +117,8 @@
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:storyIdsStr forKey:@"storyList"];
     
-    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getCommentedStorys" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
-        NSLog(@"eting/getCommentedStorys: %@",(NSDictionary *)responseObject);
+    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getReplyList" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        NSLog(@"eting/getReplyList: %@",(NSDictionary *)responseObject);
         NSMutableArray* storyArr = [responseObject objectForKey:@"ReplyList"];
         for (NSDictionary* storyDic in storyArr) {
             [[StoryManager sharedSingleton] addStoryReply:storyDic];

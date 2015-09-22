@@ -125,7 +125,7 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error NS_AVAILABLE_IOS(3_0){
     FSAlertView *alert = [[FSAlertView alloc] initWithTitle:@"에러" message:@"푸시를 전송 할 수 없는 디바이스 입니다." cancelButton:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
-        exit(0);
+        //exit(0);
     }] otherButtons: nil];
     [alert show];
 }

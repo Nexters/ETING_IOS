@@ -150,13 +150,12 @@
 - (IBAction)starClick:(id)sender{
     UIButton* btn = (UIButton*)sender;
     if (btn.tag == 1) {
-        NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
-        
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:uuidStr,@"phone_id", nil];
+        NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:deviceId,@"device_id", nil];
         [MBProgressHUD showHUDAddedTo:self animated:YES];
-        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getRandomStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/getStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
             
-            NSLog(@"eting/getRandomStory: %@",(NSDictionary *)responseObject);
+            NSLog(@"eting/getStory: %@",(NSDictionary *)responseObject);
             NSDictionary* saveReceiveDic = [responseObject objectForKey:@"recievedStory"];
             if (saveReceiveDic != NULL) {
                 [[StoryManager sharedSingleton] saveStamp:saveReceiveDic];

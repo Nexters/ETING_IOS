@@ -59,12 +59,14 @@
         
     }] otherButtons:[FSBlockButton blockButtonWithTitle:@"확인" block:^ {
         NSString* storyIdStr = [NSString stringWithFormat:@"%@",[stampDic objectForKey:@"story_id"]];
+        NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
         NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:storyIdStr,@"story_id"
+                                    ,deviceId,@"device_id"
                                     , nil];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/report" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+        [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/reportStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
             
-            NSLog(@"eting/saveStamp: %@",(NSDictionary *)responseObject);
+            NSLog(@"eting/reportStory: %@",(NSDictionary *)responseObject);
             [[StoryManager sharedSingleton] removeStamp:storyIdStr];
             [self dismissViewControllerAnimated:TRUE completion:nil];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -109,13 +111,15 @@
     if (![stampIdSuffix isEqualToString:@""] && [stampIdSuffix hasSuffix:@","]) {
         stampId = [stampIdSuffix substringWithRange:NSMakeRange(0, stampIdSuffix.length-1)];
     }
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
     NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys:storyIdStr,@"story_id"
-                                ,_writeTextView.text,@"sender"
-                                ,stampId,@"stamp_id", nil];
+        ,deviceId,@"device_id"
+        ,_writeTextView.text,@"reply_content"
+        ,stampId,@"emoticon_list", nil];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/saveStamp" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
+    [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/saveReply" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
         
-        NSLog(@"eting/saveStamp: %@",(NSDictionary *)responseObject);
+        NSLog(@"eting/saveReply: %@",(NSDictionary *)responseObject);
         [[StoryManager sharedSingleton] removeStamp:storyIdStr];
         [_mainView setStarTimer];
         [self dismissViewControllerAnimated:TRUE completion:nil];

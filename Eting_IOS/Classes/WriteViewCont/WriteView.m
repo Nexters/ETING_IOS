@@ -75,9 +75,9 @@
     }];
     
     NSString *uuidStr = [[AFAppDotNetAPIClient sharedClient] deviceUUID];
-    
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:@"DeviceId"];
     NSTimeInterval before = [[NSDate date] timeIntervalSince1970];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:_textView.text,@"content",uuidStr,@"phone_id", nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:_textView.text,@"content",deviceId,@"device_id", nil];
     [[AFAppDotNetAPIClient sharedClient] postPath:@"eting/saveStory" parameters:parameters success:^(AFHTTPRequestOperation *response, id responseObject) {
         
         NSLog(@"eting/saveStory: %@",(NSDictionary *)responseObject);
