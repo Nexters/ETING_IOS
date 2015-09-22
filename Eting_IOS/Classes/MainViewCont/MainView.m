@@ -84,7 +84,7 @@
 - (void)updateStar:(id)sender{
     if ([_stampArr count] == 0) {
         NSLog(@"%lf",[[NSDate date] timeIntervalSince1970] - starCheckTime);
-        int timeInterval = 60;
+        int timeInterval = 3;
         if ([[NSDate date] timeIntervalSince1970] - starCheckTime > timeInterval*5) {
             [timer invalidate];
             timer = NULL;
