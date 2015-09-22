@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		692448A353F34D83A9DD92DC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1966F5520634C93B65D98D3 /* libPods.a */; };
+		362011BB1BB18DE5003071D1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362011BA1BB18DE5003071D1 /* libPods.a */; };
+		362011BD1BB18EC2003071D1 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362011BC1BB18EC2003071D1 /* libAFNetworking.a */; };
+		362011C11BB18EE9003071D1 /* libFSExtendedAlertKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362011BE1BB18EE9003071D1 /* libFSExtendedAlertKit.a */; };
+		362011C21BB18EE9003071D1 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362011BF1BB18EE9003071D1 /* libJSONKit.a */; };
+		362011C31BB18EE9003071D1 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 362011C01BB18EE9003071D1 /* libMBProgressHUD.a */; };
 		CD10CC1A1872FB3800EF30F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10CC191872FB3800EF30F4 /* Foundation.framework */; };
 		CD10CC1C1872FB3800EF30F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10CC1B1872FB3800EF30F4 /* CoreGraphics.framework */; };
 		CD10CC1E1872FB3800EF30F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD10CC1D1872FB3800EF30F4 /* UIKit.framework */; };
@@ -192,6 +196,11 @@
 
 /* Begin PBXFileReference section */
 		109F5FB4E8D22939374629BB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		362011BA1BB18DE5003071D1 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		362011BC1BB18EC2003071D1 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Release-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		362011BE1BB18EE9003071D1 /* libFSExtendedAlertKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFSExtendedAlertKit.a; path = "Pods/../build/Debug-iphoneos/libFSExtendedAlertKit.a"; sourceTree = "<group>"; };
+		362011BF1BB18EE9003071D1 /* libJSONKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJSONKit.a; path = "Pods/../build/Debug-iphoneos/libJSONKit.a"; sourceTree = "<group>"; };
+		362011C01BB18EE9003071D1 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMBProgressHUD.a; path = "Pods/../build/Debug-iphoneos/libMBProgressHUD.a"; sourceTree = "<group>"; };
 		CD10CC161872FB3800EF30F4 /* Eting_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eting_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD10CC191872FB3800EF30F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD10CC1B1872FB3800EF30F4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -401,7 +410,11 @@
 				CD10CC1C1872FB3800EF30F4 /* CoreGraphics.framework in Frameworks */,
 				CD10CC1E1872FB3800EF30F4 /* UIKit.framework in Frameworks */,
 				CD10CC1A1872FB3800EF30F4 /* Foundation.framework in Frameworks */,
-				692448A353F34D83A9DD92DC /* libPods.a in Frameworks */,
+				362011C11BB18EE9003071D1 /* libFSExtendedAlertKit.a in Frameworks */,
+				362011C21BB18EE9003071D1 /* libJSONKit.a in Frameworks */,
+				362011C31BB18EE9003071D1 /* libMBProgressHUD.a in Frameworks */,
+				362011BD1BB18EC2003071D1 /* libAFNetworking.a in Frameworks */,
+				362011BB1BB18DE5003071D1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +463,11 @@
 		CD10CC181872FB3800EF30F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				362011BE1BB18EE9003071D1 /* libFSExtendedAlertKit.a */,
+				362011BF1BB18EE9003071D1 /* libJSONKit.a */,
+				362011C01BB18EE9003071D1 /* libMBProgressHUD.a */,
+				362011BC1BB18EC2003071D1 /* libAFNetworking.a */,
+				362011BA1BB18DE5003071D1 /* libPods.a */,
 				CD2CAF43187EDF080026171A /* MessageUI.framework */,
 				CD10CC191872FB3800EF30F4 /* Foundation.framework */,
 				CD10CC1B1872FB3800EF30F4 /* CoreGraphics.framework */,
@@ -1224,6 +1242,11 @@
 				GCC_PREFIX_HEADER = "Eting_IOS/Eting_IOS-Prefix.pch";
 				INFOPLIST_FILE = "Eting_IOS/Eting_IOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1242,6 +1265,11 @@
 				GCC_PREFIX_HEADER = "Eting_IOS/Eting_IOS-Prefix.pch";
 				INFOPLIST_FILE = "Eting_IOS/Eting_IOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
